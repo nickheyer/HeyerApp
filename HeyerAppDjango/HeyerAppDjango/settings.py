@@ -8,6 +8,9 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
+
+FOR NICKS DEPLOYEMENT, FOLLOWING THIS SERIES TO STAY CURRENT:
+https://www.youtube.com/watch?v=c9QVV9ry620
 """
 
 from pathlib import Path
