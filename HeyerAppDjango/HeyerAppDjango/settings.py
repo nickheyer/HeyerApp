@@ -33,14 +33,16 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '0.0.0.0',
     "127.0.0.1",
-    "django"
+    "django",
+    '6zegpqhy7q.us-east-2.awsapprunner.com'
                 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://0.0.0.0',
     "http://127.0.0.1",
     'https://heyer.app',
-    'http://heyer.app'
+    'http://heyer.app',
+    '6zegpqhy7q.us-east-2.awsapprunner.com'
                 ]
 
 # Application definition
