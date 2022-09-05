@@ -9,7 +9,6 @@
 *.user
 *.userosscache
 *.sln.docstates
-db.sqlite3
 .secret.txt
 
 # User-specific files (MonoDevelop/Xamarin Studio)
@@ -353,4 +352,3 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
-HeyerAppDjango/db.sqlite3
