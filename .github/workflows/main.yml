@@ -40,6 +40,21 @@ jobs:
           echo Building containers
           docker-compose build
           docker-compose push
+          
+  # This workflow contains a single job called "deploy"
+  deploy:
+    # The type of runner that the job will run on
+    runs-on: [self-hosted, prod]
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v3
+      - name: Update requirements
+        run: |
+          echo Pulling images
+          cd $GITHUB_WORKSPACE
+          docker-compose pull
+          docker-compose up
 
   
 
