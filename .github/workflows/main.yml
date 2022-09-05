@@ -31,7 +31,7 @@ jobs:
           echo Updating requirements file
           pip freeze > requirements.txt
           echo Deactivating
-          deactive
+          deactivate
   
       - name: Build docker containers
         run: |
