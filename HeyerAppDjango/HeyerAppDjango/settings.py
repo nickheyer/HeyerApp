@@ -44,7 +44,8 @@ CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1",
     'https://heyer.app',
     'http://heyer.app',
-    '6zegpqhy7q.us-east-2.awsapprunner.com'
+    '6zegpqhy7q.us-east-2.awsapprunner.com',
+    'http://ec2-3-21-130-9.us-east-2.compute.amazonaws.com',
                 ]
 
 # Application definition
