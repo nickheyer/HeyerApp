@@ -40,7 +40,7 @@ ALLOWED_HOSTS = [
     'ec2-3-21-130-9.us-east-2.compute.amazonaws.com'
                 ]
 
-CSRF_TRUSTED_ORIGINS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://*', 'http://*']
 
 # Application definition
 
