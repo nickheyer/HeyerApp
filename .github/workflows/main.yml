@@ -53,8 +53,8 @@ jobs:
         run: |
           echo Pulling images
           cd $GITHUB_WORKSPACE
-          docker-compose pull
-          docker-compose up
+          sudo docker-compose pull
+          sudo docker-compose up
 
   
 
