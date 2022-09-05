@@ -39,6 +39,7 @@ jobs:
           cd ~/code/HeyerApp
           echo Building containers
           docker-compose build
+          docker-compose push
 
   
 
