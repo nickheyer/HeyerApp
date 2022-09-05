@@ -35,6 +35,8 @@ jobs:
   
       - name: Build docker containers
         run: |
+          echo Changing Dir
+          cd ~/code/HeyerApp
           echo Building containers
           docker-compose build
 
