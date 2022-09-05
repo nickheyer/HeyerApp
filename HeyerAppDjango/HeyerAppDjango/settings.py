@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 FOR NICKS DEPLOYEMENT, FOLLOWING THIS SERIES TO STAY CURRENT:
 https://www.youtube.com/watch?v=c9QVV9ry620
-and this for docker:
+and this for docker configuration:
 https://www.youtube.com/watch?v=vJAfq6Ku4cI
 """
 
