@@ -2,13 +2,14 @@ version: '3.9'
 
 services:
   
-  heyer_app_django:
+  heyerapp-django:
     volumes:
       - static:/static
     build:
       context: .
     expose:
       - "8000"
+    image: nickheyer/heyerapp-django:latest
   
   nginx:
     build: ./nginx
@@ -17,7 +18,8 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - heyer_app_django
+      - heyerapp-django
+    image: nickheyer/heyerapp-nginx:latest
 
 volumes:
   static: 
