@@ -36,7 +36,8 @@ ALLOWED_HOSTS = [
     '0.0.0.0',
     "127.0.0.1",
     "django",
-    '6zegpqhy7q.us-east-2.awsapprunner.com'
+    '6zegpqhy7q.us-east-2.awsapprunner.com',
+    'ec2-3-21-130-9.us-east-2.compute.amazonaws.com'
                 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -46,6 +47,7 @@ CSRF_TRUSTED_ORIGINS = [
     'http://heyer.app',
     '6zegpqhy7q.us-east-2.awsapprunner.com',
     'http://ec2-3-21-130-9.us-east-2.compute.amazonaws.com',
+    'ec2-3-21-130-9.us-east-2.compute.amazonaws.com'
                 ]
 
 # Application definition
