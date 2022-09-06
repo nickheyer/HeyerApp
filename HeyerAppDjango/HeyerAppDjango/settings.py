@@ -42,10 +42,11 @@ ALLOWED_HOSTS = [
     '6zegpqhy7q.us-east-2.awsapprunner.com',
     'ec2-3-21-130-9.us-east-2.compute.amazonaws.com',
     'heyerapp',
-    '3.21.130.9'
+    '3.21.130.9',
+    'heyer.app'
                 ]
 
-CSRF_TRUSTED_ORIGINS = [ 'http://3.21.130.9', 'http://0.0.0.0', 'https://*.ec2-3-21-130-9.us-east-2.compute.amazonaws.com', 'http://*.ec2-3-21-130-9.us-east-2.compute.amazonaws.com','https://*', 'http://*']
+CSRF_TRUSTED_ORIGINS = ['http://heyer.app', 'http://3.21.130.9', 'http://0.0.0.0', 'https://*.ec2-3-21-130-9.us-east-2.compute.amazonaws.com', 'http://*.ec2-3-21-130-9.us-east-2.compute.amazonaws.com','https://*', 'http://*']
 
 # Application definition
 
