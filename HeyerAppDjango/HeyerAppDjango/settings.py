@@ -41,7 +41,7 @@ ALLOWED_HOSTS = [
     'heyerapp'
                 ]
 
-CSRF_TRUSTED_ORIGINS = [ 'http://0.0.0.0', 'https://*.ec2-3-21-130-9.us-east-2.compute.amazonaws.com', 'http://*.ec2-3-21-130-9.us-east-2.compute.amazonaws.com','https://*', 'http://*']
+CSRF_TRUSTED_ORIGINS = [ 'http://3.21.130.9', 'http://0.0.0.0', 'https://*.ec2-3-21-130-9.us-east-2.compute.amazonaws.com', 'http://*.ec2-3-21-130-9.us-east-2.compute.amazonaws.com','https://*', 'http://*']
 
 # Application definition
 
