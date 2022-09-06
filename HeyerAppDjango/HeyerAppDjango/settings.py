@@ -37,10 +37,11 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "django",
     '6zegpqhy7q.us-east-2.awsapprunner.com',
-    'ec2-3-21-130-9.us-east-2.compute.amazonaws.com'
+    'ec2-3-21-130-9.us-east-2.compute.amazonaws.com',
+    'heyerapp'
                 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://0.0.0.0', 'https://*.ec2-3-21-130-9.us-east-2.compute.amazonaws.com', 'http://*.ec2-3-21-130-9.us-east-2.compute.amazonaws.com','https://*', 'http://*']
+CSRF_TRUSTED_ORIGINS = [ 'http://0.0.0.0', 'https://*.ec2-3-21-130-9.us-east-2.compute.amazonaws.com', 'http://*.ec2-3-21-130-9.us-east-2.compute.amazonaws.com','https://*', 'http://*']
 
 # Application definition
 
