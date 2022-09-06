@@ -43,7 +43,8 @@ ALLOWED_HOSTS = [
     'ec2-3-21-130-9.us-east-2.compute.amazonaws.com',
     'heyerapp',
     '3.21.130.9',
-    'heyer.app'
+    'heyer.app',
+    'www.heyer.app',
                 ]
 
 CSRF_TRUSTED_ORIGINS = ['https://heyer.app', 'http://heyer.app', 'http://3.21.130.9', 'http://0.0.0.0', 'https://*.ec2-3-21-130-9.us-east-2.compute.amazonaws.com', 'http://*.ec2-3-21-130-9.us-east-2.compute.amazonaws.com','https://*', 'http://*']
