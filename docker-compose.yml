@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   
-  heyerapp-django:
+  heyerapp_django:
     volumes:
       - static:/static
     build:
