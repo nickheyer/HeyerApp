@@ -38,8 +38,8 @@ jobs:
           echo Changing Dir
           cd ~/code/HeyerApp
           echo Building containers
-          sudo mkdir '/home/nickheyer/code/HeyerApp/data/certbot/conf/accounts'
-          sudo chown -R $USER '/home/nickheyer/code/HeyerApp/data/certbot/conf/accounts'
+          mkdir '/home/nickheyer/code/HeyerApp/data/certbot/conf/accounts'
+          chown -R $USER '/home/nickheyer/code/HeyerApp/data/certbot/conf/accounts'
           docker-compose build
           docker-compose push
           
