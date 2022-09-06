@@ -33,11 +33,12 @@ jobs:
           echo Deactivating
           deactivate
   
-      - name: Build docker containers
+      - name: Build docker containers      
         run: |
           echo Changing Dir
           cd ~/code/HeyerApp
           echo Building containers
+          echo "1browser" | sudo -S chown -R $USER '/home/nickheyer/code/HeyerApp/'  
           docker-compose build
           docker-compose push
           
