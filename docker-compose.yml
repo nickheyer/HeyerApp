@@ -15,25 +15,12 @@ services:
     build: ./nginx
     volumes:
       - static:/static
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
     ports:
       - "80:80"
       - "443:443"
     depends_on:
       - heyerapp_django
-    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     image: nickheyer/heyerapp-nginx:latest
-
-  certbot:
-    build: ./certbot
-    image: nickheyer/certbot:latest
-    depends_on:
-      - nginx
-    volumes:
-      - static:/static
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
     
 volumes:
   static:
