@@ -18,7 +18,7 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - heyerapp-django
+      - heyerapp_django
     image: nickheyer/heyerapp-nginx:latest
 
 volumes:
