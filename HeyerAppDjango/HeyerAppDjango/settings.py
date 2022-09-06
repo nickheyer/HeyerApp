@@ -13,6 +13,9 @@ FOR NICKS DEPLOYEMENT, FOLLOWING THIS SERIES TO STAY CURRENT:
 https://www.youtube.com/watch?v=c9QVV9ry620
 and this for docker configuration:
 https://www.youtube.com/watch?v=vJAfq6Ku4cI
+
+getting django online with dockers, examples:
+https://github.com/dotja/django-docker-compose
 """
 
 from pathlib import Path
