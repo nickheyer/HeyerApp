@@ -20,8 +20,6 @@ services:
     depends_on:
       - heyerapp-django
     image: nickheyer/heyerapp-nginx:latest
-    restart: always
-
 
 volumes:
   static:
