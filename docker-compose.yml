@@ -11,10 +11,17 @@ services:
       - "8000"
     image: nickheyer/heyerapp-django:latest
   
+
+
   nginx:
+    environment:
+        - CERTBOT_EMAIL
     build: ./nginx
+    env_file:
+      - ./nginx_certbot.env
     volumes:
       - static:/static
+      - nginx_secrets:/etc/letsencrypt
     ports:
       - "80:80"
       - "443:443"
@@ -23,4 +30,5 @@ services:
     image: nickheyer/heyerapp-nginx:latest
     
 volumes:
+  nginx_secrets:
   static:
