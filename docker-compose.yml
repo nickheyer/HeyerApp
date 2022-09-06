@@ -14,11 +14,9 @@ services:
 
 
   nginx:
-    environment:
-        - CERTBOT_EMAIL
     build: ./nginx
     env_file:
-      - ./nginx_certbot.env
+      - ./nginx/nginx-certbot.env
     volumes:
       - static:/static
       - nginx_secrets:/etc/letsencrypt
