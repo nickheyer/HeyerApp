@@ -3,24 +3,6 @@
  */
 
  body {
-    min-height: 100vh;
- }
-
-.center {
-    display: flex;
-    justify-content: center;
-}
-
-.right {
-    display: flex;
-    justify-content: right;
-}
-
-.left {
-    display: flex;
-    justify-content: left;
-}
- body {
     margin: 0;
     background: black;
 }
