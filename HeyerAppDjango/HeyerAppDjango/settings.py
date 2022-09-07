@@ -71,6 +71,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+MIDDLEWARE_CLASSES = (
+    # other middlewares...
+    'django_user_agents.middleware.UserAgentMiddleware',
+)
+
 ROOT_URLCONF = 'HeyerAppDjango.urls'
 
 TEMPLATES = [
