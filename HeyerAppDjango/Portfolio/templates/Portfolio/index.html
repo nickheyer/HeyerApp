@@ -1,12 +1,19 @@
 {% extends "base.html" %}
 
+
 {% block content %}
 {% load user_agents %}
+{% if request|is_pc == False %}<input id="useragent" type="hidden" value="true"/>{% endif %}
+{% if user.is_authenticated %}<input id="username" type="hidden" value="{{request.user.username}}"/>{% else %}<input id="username" type="hidden" value="guest"/>{% endif %}
 <p>PAGE IS WORKING</p>
 
-<div  style="margin: 30px; border:5px solid blueviolet; height: 90vh">
+<div style="margin: 30px; border:2px solid #966fd6; height: 90vh">
     <div class="tv" style="height: 100%">
-        <div id="terminal"  style="padding: 15px; height: 100%" >{% if request | is_mobile %}TESTING MOBILE USER AGENT {% endif %}</div>
+        <div id="terminal"  style="padding: 15px; height: 100%" >
+            {% if request|is_pc  == False%}
+            <h1 style="padding: 15px;font-size:36px">HeyerApp's Terminal not available on mobile devices, please navigate with the above links if they exist.</h1>
+            {% endif %}
+        </div>
         <div class="flicker" ></div>
         <div class="scanlines" ></div>
     </div>

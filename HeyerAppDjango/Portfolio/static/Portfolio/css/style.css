@@ -2,15 +2,21 @@
  * part of the style based on http://js13kgames.com/entries/lost-in-cyberspace
  */
 
+.glow {
+    box-shadow: 0 20px 20px rgba(37, 117, 17, 0.384);
+}
+
  body {
     margin: 0;
-    background: black;
+    /* background-color: #23292f; */
+    background-color: black;
 }
 .terminal img[src*="blob:"], .terminal video {
     max-width: 100%;
 }
 #terminal {
     height: 100vh;
+
 }
 /* glow */
 .terminal {

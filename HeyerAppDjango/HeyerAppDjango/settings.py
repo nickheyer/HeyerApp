@@ -73,6 +73,11 @@ MIDDLEWARE = [
     'django_user_agents.middleware.UserAgentMiddleware',
 ]
 
+MIDDLEWARE_CLASSES = (
+    # other middlewares...
+    'django_user_agents.middleware.UserAgentMiddleware',
+)
+
 ROOT_URLCONF = 'HeyerAppDjango.urls'
 
 TEMPLATES = [
