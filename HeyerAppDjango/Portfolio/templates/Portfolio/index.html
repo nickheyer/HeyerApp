@@ -3,18 +3,9 @@
 {% block content %}
 <p>PAGE IS WORKING</p>
 <script>
-    var term = new Terminal({
-        cursorBlink: "block"
-    });
-    const ws = new WebSocket("ws://localhost:3000", "echo-protocol");
-    var curr_line = "";
-    var entries = [];
-    term.open(document.getElementById("terminal"));
-    term.write("web shell $ ");
-    term.on("key", function(key, ev) {
-        curr_line += key;
-        term.write(key);
-    });
+    var term = new Terminal();
+    term.open(document.getElementById('terminal'));
+    term.write('Hello from \x1B[1;3;31mxterm.js\x1B[0m $ ')
 
 </script>
 {% endblock %}
