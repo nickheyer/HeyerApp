@@ -31,11 +31,36 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         return fs;
     }
+    function clean_path(p) {
+        console.log(p);
+        if (p.endsWith('/')) {
+            p = p.slice(0, -1);
+        }
+        if (p.startsWith('/')) {
+            p = p.slice(1);
+        }
+        return p;
+    }
     function is_dir(obj) {
         return typeof obj === 'object';
     }
     function is_file(obj) {
         return typeof obj === 'string';
+    }
+    function is_path(p) {
+        p = clean_path(p);
+        path_list = p.split("/");
+        tfp = fs;
+        for (const k of path_list) {
+            if (Object.keys(tfp).includes(k)) {
+                tfp = tfp[k];
+            }
+            else {
+                return null;
+            }
+        }
+        if (is_dir(tfp)) {return "dir";}
+        else if (is_file(tfp)) {return "file";}
     }
 
     var descriptions = {
@@ -55,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
             "name" : "ls",
             "description" : "Lists all files and directories relative to CWD.",
             "usage" : "ls <optional arg '-a'>",
-            "example" : "ls\nls -a"    
+            "example" : "ls <or> ls -a"    
         },
         cat : {
             "name" : "cat",
@@ -64,29 +89,56 @@ document.addEventListener("DOMContentLoaded", function() {
             "example" : "cat baz.txt"    
         },
         ping : {
-            "name" : "cd",
-            "description" : "Changes directory",
-            "usage" : "cd <dir path>",
-            "example" : "cd projects/"    
+            "name" : "ping",
+            "description" : "Sends a fake ping, recieves a pong.",
+            "usage" : "ping",
+            "example" : "pong"    
         },
         echo : {
-            "name" : "cd",
-            "description" : "Changes directory",
-            "usage" : "cd <dir path>",
-            "example" : "cd projects/"    
+            "name" : "echo",
+            "description" : "Echos text back to the user.",
+            "usage" : "echo <text>",
+            "example" : "echo foo bar"    
         },
         help : {
-            "name" : "cd",
-            "description" : "Changes directory",
-            "usage" : "cd <dir path>",
-            "example" : "cd projects/"    
+            "name" : "help",
+            "description" : "Lists all available commands, including usage and examples.",
+            "usage" : "help",
+            "example" : "help"    
+        },
+        man : {
+            "name" : "man",
+            "description" : "Lists the name, description, usage, and examples for the specified command",
+            "usage" : "man <command>",
+            "example" : "man cat"    
         }
     };
 
     var commands = {
+        test: function(...args) {
+            if (args.length > 2 || args.length == 0) {
+                term.echo("Incorrect number of arguments");
+                return;
+            }
+
+            const p = args[0]
+
+            if (args.includes("-f") && is_path(p) == "file") {
+                term.echo("This is a valid file path!"); 
+            }
+            else if (args.includes("-d") && is_path(p) == "dir") {
+                term.echo("This is a valid folder path!");
+            }
+            else if (is_path(p) && args.length == 1) {
+                term.echo("This is a valid path!");
+            }
+            else {
+                term.echo("This isn't a valid path or path type!");
+            }
+        },
         cd: function(dir) {
             this.pause();
-            if (dir === '/') {
+            if (dir === '/' || !dir || dir === '~') {
                 path = [];
                 cwd = restore_cwd(fs, path);
             } else if (dir === '..') {
@@ -95,6 +147,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     cwd = restore_cwd(fs, path);
                 }
             } else if (dir.match(/\//)) {
+                console.log("MATCHED");
                 var p = dir.replace(/\/$/, '').split('/').filter(Boolean);
                 if (dir[0] !== '/') {
                     p = path.concat(p);
@@ -196,6 +249,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 this.echo(dir.join('\n'));
             }
         },
+
         cat: function(file) {
             if (!is_file(cwd[file])) {
                 this.error("cat: " + $.terminal.escape_brackets(file) + ": No such file or directory");
@@ -212,13 +266,32 @@ document.addEventListener("DOMContentLoaded", function() {
             this.echo(cmd.rest);
         },
         help: function() {
-            var cmd_list = Object.keys(commands);
-            this.echo("Available commands: ")
-            for (var x = 0; x < cmd_list.length; x++) {
-                this.echo(descriptions[cmd_list[x]]["name"]);
+            this.echo("Available commands:\n--")
+            for (const key of Object.keys(descriptions)) {
+                var cmd = descriptions[key];
+                this.echo(cmd["name"]);
+                this.echo('description: ' + cmd["description"]);
+                this.echo('usage: ' + cmd["usage"]);
+                this.echo('--');
+            }
+        },
+        man: function(arg) {
+            if (arg && arg in descriptions === false) {
+                this.echo("No manual entry for " + arg);
+            }
+            else if (arg in descriptions) {
+                var cmd = descriptions[arg];
+                this.echo('name: ' + cmd["name"]);
+                this.echo('description: ' + cmd["description"]);
+                this.echo('usage: ' + cmd["usage"]);
+                this.echo('example: ' + cmd["example"]);
+            }
+            else {
+                this.echo("What manual page do you want?\nFor example, try 'man man'.");
             }
         }
     };
+
 
 
     function completion(string, callback) {
@@ -234,7 +307,9 @@ document.addEventListener("DOMContentLoaded", function() {
         if (cmd.name === 'ls') {
             callback([]);
         } else if (cmd.name === 'cd') {
+            console.log("string: " + string);
             var p = string.split('/').filter(Boolean);
+            console.log("p: " + p.join(""));
             if (p.length === 1) {
                 if (string[0] === '/') {
                     callback(dirs(fs));
@@ -242,6 +317,9 @@ document.addEventListener("DOMContentLoaded", function() {
                     callback(dirs(cwd));
                 }
             } else {
+                if (!string) {
+                    return;
+                }
                 if (string[0] !== '/') {
                     p = path.concat(p);
                 }
@@ -262,6 +340,7 @@ document.addEventListener("DOMContentLoaded", function() {
             callback(Object.keys(commands));
         }
     }
+
 
 
 
