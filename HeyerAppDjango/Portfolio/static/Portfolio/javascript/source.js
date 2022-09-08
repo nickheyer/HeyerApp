@@ -62,6 +62,36 @@ document.addEventListener("DOMContentLoaded", function() {
         if (is_dir(tfp)) {return "dir";}
         else if (is_file(tfp)) {return "file";}
     }
+    function move_to(p) {
+        if (is_path(p) == 'dir') {
+            p = clean_path(p);
+            path_list = p.split("/");
+            for (const k of path_list) {
+                if (Object.keys(cwd).includes(k)) {
+                    cwd = cwd[k];
+                }
+                else {
+                    return;
+                }
+            }
+        }
+    }
+    function grab_file (p) {
+        if (is_path(p) == 'file') {
+            p = clean_path(p);
+            path_list = p.split("/");
+            tfp = fs;
+            for (const k of path_list) {
+                if (Object.keys(tfp).includes(k)) {
+                    tfp = tfp[k];
+                }
+                else {
+                    return null;
+                }
+            }
+            return tfp;
+        }
+    }
 
     var descriptions = {
         cd : {
@@ -115,6 +145,15 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
     var commands = {
+        pwd: function() {
+
+            full_path = `/home/${document.getElementById("username").value}`;
+            if (path != false) {
+                console.log(path.join(""))
+                full_path += "/" + path.join("/");
+            }
+            term.echo(full_path);
+        }, 
         test: function(...args) {
             if (args.length > 2 || args.length == 0) {
                 term.echo("Incorrect number of arguments");
@@ -146,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     path.pop(); // remove from end
                     cwd = restore_cwd(fs, path);
                 }
-            } else if (dir.match(/\//)) {
+            } else if (dir.match(/\//) && is_path(dir) == "dir") {
                 console.log("MATCHED");
                 var p = dir.replace(/\/$/, '').split('/').filter(Boolean);
                 if (dir[0] !== '/') {
@@ -154,11 +193,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
                 cwd = restore_cwd(fs, p);
                 path = p;
-            } else if (!is_dir(cwd[dir])) {
-                if (is_file(cwd[dir])) {
+            } else if (!is_path((path.join("/") + "/" + dir))) {
+                if (is_path(dir) == "file") {
+
                     this.error("bash: cd: " + $.terminal.escape_brackets(dir) + ": Not a directory");
                 }
                 else {
+                    console.log(dir);
                     this.error("bash: cd: " + $.terminal.escape_brackets(dir) + ": No such file or directory");
                 }
                 
@@ -249,12 +290,19 @@ document.addEventListener("DOMContentLoaded", function() {
                 this.echo(dir.join('\n'));
             }
         },
-
         cat: function(file) {
-            if (!is_file(cwd[file])) {
-                this.error("cat: " + $.terminal.escape_brackets(file) + ": No such file or directory");
-            } else {
+            if (is_path(file) == 'file') {
+                this.echo(grab_file(file));
+                
+            } 
+            else if (is_file(cwd[file])) {
                 this.echo(cwd[file]);
+            }
+            else if (is_path(file) == 'dir') {
+                this.error("cat: " + $.terminal.escape_brackets(file) + ": Can not concatenate a directory");
+            }
+            else {
+                this.error("cat: " + $.terminal.escape_brackets(file) + ": File not found");
             }
         },
         ping: function() {
@@ -299,14 +347,21 @@ document.addEventListener("DOMContentLoaded", function() {
         var cmd = $.terminal.parse_command(command);
         function dirs(cwd) {
             return Object.keys(cwd).filter(function(key) {
-                return is_dir(cwd[key]);
+                if (cmd.name === "cd") {return is_dir(cwd[key]);}
+                else {return is_file(cwd[key]) || is_dir(cwd[key]);}
+                    
             }).map(function(dir) {
-                return dir + '/';
+                console.log(dir);
+                if (is_path(dir) == 'dir' || is_dir(cwd[dir]))
+                    return dir + '/';
+                else
+                    return dir;
             });
         }
         if (cmd.name === 'ls') {
             callback([]);
-        } else if (cmd.name === 'cd') {
+        } 
+        else if (["cd", "test", "cat"].includes(cmd.name)) {
             console.log("string: " + string);
             var p = string.split('/').filter(Boolean);
             console.log("p: " + p.join(""));
@@ -331,12 +386,14 @@ document.addEventListener("DOMContentLoaded", function() {
                     return prefix + '/' + dir;
                 }));
             }
-        } else if (cmd.name === 'cat') {
+        } 
+        else if (cmd.name === 'cat') {
             var files = Object.keys(cwd).filter(function(key) {
                 return is_file(cwd[key]);
             });
             callback(files);
-        } else {
+        } 
+        else {
             callback(Object.keys(commands));
         }
     }
@@ -355,7 +412,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-            prompt = `${user}@heyerapp:~` + path.join('/') + '$ ';
+            prompt = `${user}@heyerapp:~`;
+            if (path != false) {prompt += '/';}
+            prompt += path.join('/') + '$ ';
             $('.title').html(prompt);
             callback(prompt);
         };
