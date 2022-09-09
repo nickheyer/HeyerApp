@@ -82,14 +82,14 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   function pop_fs() {
     var settings = {
-      url: `http://127.0.0.1:8000/resumeapi/`,
+      url: `${window.location.href}resumeapi/`,
       method: "GET",
       timeout: 0,
     };
     $.ajax(settings).done(function (r) {
       for (const model in r) {
         var settings = {
-          url: `http://127.0.0.1:8000/resumeapi/${model}/`,
+          url: `${window.location.href}resumeapi/${model}/`,
           method: "GET",
           timeout: 0,
         };
@@ -378,9 +378,9 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     cat: function (file) {
       if (is_path(path.join("/") + "/" + file) == "file") {
-        this.echo("\n" + grab_file(path.join("/") + "/" + file));
+        this.echo(grab_file(path.join("/") + "/" + file));
       } else if (is_file(cwd[file])) {
-        this.echo("\n" + cwd[file]);
+        this.echo(cwd[file]);
       } else if (is_path(file) == "dir") {
         this.error(
           "cat: " +
@@ -519,12 +519,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (document.getElementById("useragent")) {
         let detection =
-          "MOBILE DEVICE DETECTED\nHeyerApp's Terminal is not intended for mobile devices.\n";
+          "MOBILE DEVICE DETECTED\nHeyerApp's Terminal is not yet intended for mobile devices.\n";
 
         this.echo(detection);
         this.disable();
       } else {
-        this.echo("Type 'help' or double-tab for list of commands.\nFor resume styled as a filesystem, type 'tree -a', else go here <https://heyer.app/resume>.");
+        this.echo("Type 'help' or double-tab for list of commands.\nFor résumé via filesystem, type 'tree -a', else go here <https://heyer.app/resume>.");
       }
     },
 

@@ -5,8 +5,6 @@
 {% load user_agents %}
 {% if not request|is_pc %}<input id="useragent" type="hidden" value="true"/>{% endif %}
 {% if user.is_authenticated %}<input id="username" type="hidden" value="{{request.user.username}}"/>{% else %}<input id="username" type="hidden" value="guest"/>{% endif %}
-<p>PAGE IS WORKING</p>
-
 <div style="margin: 30px; border:2px solid #966fd6; height: 90vh">
     <div class="tv" style="height: 100%">
         <div id="terminal"  style="padding: 15px; height: 100%" >
