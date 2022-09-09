@@ -527,7 +527,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
             if (document.getElementById("useragent")) {
-                let detection = "MOBILE DEVICE DETECTED\nHeyerApp's Terminal not intended for mobile devices, please navigate with the above links if they exist in this stage of development.";
+                let detection = "MOBILE DEVICE DETECTED\nHeyerApp's Terminal is not intended for mobile devices.\n";
 
                 this.echo(detection);
                 this.disable();
