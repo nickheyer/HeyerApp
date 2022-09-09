@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
             'baz.txt': 'Hello this is file baz.txt',
             'quux.txt': "Lorem Ispum (quux.txt)",
             'foo.txt': "Hello, World!",
-            'bar.txt': "Wellcome to the bar",
+            'bar.txt': "Welcome to the bar",
             "terminal": {
                 "foo": {
                     "bar.txt": "hello bar",
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
         return fs;
     }
     function clean_path(p) {
-        console.log(p);
+
         if (p.endsWith('/')) {
             p = p.slice(0, -1);
         }
@@ -100,6 +100,14 @@ document.addEventListener("DOMContentLoaded", function() {
             "usage" : "cd <dir path>",
             "example" : "cd projects/"    
         },
+
+        pwd : {
+            "name" : "pwd",
+            "description" : "Prints the current working directory",
+            "usage" : "pwd",
+            "example" : "pwd"    
+        },
+
         tree : {
             "name" : "tree",
             "description" : "Lists all files and directories in filesystem",
@@ -117,6 +125,30 @@ document.addEventListener("DOMContentLoaded", function() {
             "description" : "Concatenates a file.",
             "usage" : "cat <file path>",
             "example" : "cat baz.txt"    
+        },
+        vim: {
+            "name" : "vim",
+            "description" : "Creates a text file at the current working directory.",
+            "usage" : "vim <file name> <text for file>",
+            "example" : "vim testfile.txt Wow I love test files, these are great!"    
+        },
+        rm: {
+            "name" : "rm",
+            "description" : "Deletes a file at the current working directory.",
+            "usage" : "rm <file name>",
+            "example" : "rm testfile.txt"    
+        },
+        mkdir: {
+            "name" : "mkdir",
+            "description" : "Creates a directory at the current working directory.",
+            "usage" : "mkdir <dir name>",
+            "example" : "mkdir testdir"    
+        },
+        rmdir: {
+            "name" : "rmdir",
+            "description" : "Deletes a directory (recursively) at the current working directory.",
+            "usage" : "rmdir <dir name>",
+            "example" : "rmdir testdir"    
         },
         ping : {
             "name" : "ping",
@@ -145,15 +177,17 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
     var commands = {
+
         pwd: function() {
 
             full_path = `/home/${document.getElementById("username").value}`;
             if (path != false) {
-                console.log(path.join(""))
+
                 full_path += "/" + path.join("/");
             }
             term.echo(full_path);
-        }, 
+        },
+
         test: function(...args) {
             if (args.length > 2 || args.length == 0) {
                 term.echo("Incorrect number of arguments");
@@ -175,40 +209,56 @@ document.addEventListener("DOMContentLoaded", function() {
                 term.echo("This isn't a valid path or path type!");
             }
         },
+
         cd: function(dir) {
+            
             this.pause();
             if (dir === '/' || !dir || dir === '~') {
                 path = [];
                 cwd = restore_cwd(fs, path);
-            } else if (dir === '..') {
+            } 
+            
+            else if (dir === '..') {
                 if (path.length) {
                     path.pop(); // remove from end
                     cwd = restore_cwd(fs, path);
                 }
-            } else if (dir.match(/\//) && is_path(dir) == "dir") {
-                console.log("MATCHED");
+            } 
+            
+            else if (dir.match(/\//) && is_path(dir) == "dir") {
                 var p = dir.replace(/\/$/, '').split('/').filter(Boolean);
+                console.log("P: " + p);
                 if (dir[0] !== '/') {
                     p = path.concat(p);
                 }
                 cwd = restore_cwd(fs, p);
-                path = p;
-            } else if (!is_path((path.join("/") + "/" + dir))) {
-                if (is_path(dir) == "file") {
 
+                path = p;
+            } 
+            
+            else if (!is_path(path.join("/") + "/" + dir) || is_path(path.join("/") + "/" + dir) == 'file') {
+                if (is_path(path.join("/") + '/' + dir) == "file") {
+
+                    
                     this.error("bash: cd: " + $.terminal.escape_brackets(dir) + ": Not a directory");
                 }
                 else {
-                    console.log(dir);
+                    console.log(path.join("/") + dir);
                     this.error("bash: cd: " + $.terminal.escape_brackets(dir) + ": No such file or directory");
                 }
                 
-            } else {
+            } 
+            
+            else {
+                dir = clean_path(dir);
                 cwd = cwd[dir];
                 path.push(dir);
+
             }
+
             this.resume();
         },
+
         tree: function() {
             if (!is_dir(cwd)) {
                 throw new Error('Internal Error Invalid directory');
@@ -244,10 +294,6 @@ document.addEventListener("DOMContentLoaded", function() {
         ls: function(txt) {
             
             if (txt === "-a") {
-                if (!is_dir(cwd)) {
-                    throw new Error('Internal Error Invalid directory');
-                }
-
                 function filetree (d, tabs) {
                     
                     return Object.keys(d).map(function(key) {
@@ -277,6 +323,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             else {
                 if (!is_dir(cwd)) {
+
                     throw new Error('Internal Error Invalid directory');
                 }
 
@@ -290,9 +337,40 @@ document.addEventListener("DOMContentLoaded", function() {
                 this.echo(dir.join('\n'));
             }
         },
+
+        mkdir : function(n) {
+            cwd[n] = {};
+        }, 
+        rmdir : function(n) {
+            if (is_path(path.join("/") + "/" + n) != 'dir') {
+                term.echo("rmdir: failed to remove '" + n + "' : No such directory");
+            }
+            else {
+                delete cwd[n]
+            }
+            
+        }, 
+        vim : function(...args) {
+            if (args.length < 2) {
+                term.echo("vim: incorrect number of arguments, try 'man vim'");
+            }
+            else {
+                cwd[args[0]] = args.slice(1).join(" ");
+            }
+            
+        },
+        rm : function(n) {
+            if (is_path(path.join("/") + "/" + n) != 'file') {
+                term.echo("rm: failed to remove '" + n + "' : No such file");
+            }
+            else {
+                delete cwd[n]
+            }
+        },
         cat: function(file) {
-            if (is_path(file) == 'file') {
-                this.echo(grab_file(file));
+
+            if (is_path(path.join("/") + "/" + file) == 'file') {
+                this.echo(grab_file(path.join("/") + "/" + file));
                 
             } 
             else if (is_file(cwd[file])) {
@@ -347,11 +425,12 @@ document.addEventListener("DOMContentLoaded", function() {
         var cmd = $.terminal.parse_command(command);
         function dirs(cwd) {
             return Object.keys(cwd).filter(function(key) {
+                
                 if (cmd.name === "cd") {return is_dir(cwd[key]);}
                 else {return is_file(cwd[key]) || is_dir(cwd[key]);}
                     
             }).map(function(dir) {
-                console.log(dir);
+
                 if (is_path(dir) == 'dir' || is_dir(cwd[dir]))
                     return dir + '/';
                 else
@@ -362,9 +441,9 @@ document.addEventListener("DOMContentLoaded", function() {
             callback([]);
         } 
         else if (["cd", "test", "cat"].includes(cmd.name)) {
-            console.log("string: " + string);
+
             var p = string.split('/').filter(Boolean);
-            console.log("p: " + p.join(""));
+
             if (p.length === 1) {
                 if (string[0] === '/') {
                     callback(dirs(fs));
@@ -448,12 +527,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
             if (document.getElementById("useragent")) {
-                let detection = "MOBILE DEVICE DETECTED";
+                let detection = "MOBILE DEVICE DETECTED\nHeyerApp's Terminal not intended for mobile devices, please navigate with the above links if they exist in this stage of development.";
 
                 this.echo(detection);
                 this.disable();
-            };
-
+            }
+            else {
+                this.echo("Type 'help' or double-tab for list of commands.");
+            }
         },
         
     
