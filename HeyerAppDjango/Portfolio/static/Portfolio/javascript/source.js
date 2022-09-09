@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         pwd : {
             "name" : "pwd",
-            "description" : "Prints the current working directory",
+            "description" : "Prints the current working directory.",
             "usage" : "pwd",
             "example" : "pwd"    
         },
@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function() {
         },
         man : {
             "name" : "man",
-            "description" : "Lists the name, description, usage, and examples for the specified command",
+            "description" : "Lists the name, description, usage, and examples for the specified command.",
             "usage" : "man <command>",
             "example" : "man cat"    
         }
