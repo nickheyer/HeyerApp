@@ -120,7 +120,7 @@ main {
   position: absolute;
   left: -999px;
   transition: var(--transition-speed);
-  font-size: 16px;
+  font-size: 32px;
 }
 
 .navbar:hover .logo svg {
