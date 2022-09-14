@@ -1,5 +1,5 @@
 :root {
-  font-size: 16px;
+  font-size: 32px;
   font-family: 'Source Code Pro' !important;
   --text-primary: #f2e900 ;
   --text-secondary: #02d7f2;
@@ -128,15 +128,11 @@ main {
 }
 
 /* Small screens */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1000px) {
   .navbar {
     bottom: 0;
     width: 100vw;
     height: 5rem;
-  }
-
-  .logo {
-    display: none;
   }
 
   .navbar-nav {
@@ -153,7 +149,7 @@ main {
 }
 
 /* Large screens */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 1000px) {
   .navbar {
     top: 0;
     width: 5rem;
