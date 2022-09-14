@@ -14,6 +14,7 @@ router.register(r'portfolio', views.PortfolioViewSet)
 
 urlpatterns = [
     path("", views.home, name="home"),
+    path("terminal/", views.terminal, name="terminal"),
     path("resumeapi/", include(router.urls))
 
 ]

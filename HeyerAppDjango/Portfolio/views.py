@@ -7,9 +7,11 @@ from . import models
 from . import serializers
 
 
-# Create your views here.
 def home(request):
     return render(request, "Portfolio/index.html")
+    
+def terminal(request):
+    return render(request, "Portfolio/terminal.html")
 
 class SkillViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = models.Skill.objects.all()
