@@ -128,7 +128,7 @@ main {
 }
 
 /* Small screens */
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 600px) {
   .navbar {
     bottom: 0;
     width: 100vw;
@@ -137,6 +137,12 @@ main {
 
   .navbar-nav {
     flex-direction: row;
+  }
+
+  .logo {
+    height:100%;
+    bottom: 0;
+    margin:auto;
   }
 
   .nav-link {
@@ -149,7 +155,7 @@ main {
 }
 
 /* Large screens */
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 600px) {
   .navbar {
     top: 0;
     width: 5rem;
