@@ -4,6 +4,9 @@
 
 
     <head>
+
+        
+
         {% load static %}
         <link rel="stylesheet" href="{% static 'Portfolio/css/style.css' %}">
         <script src="{% static 'Portfolio/javascript/source.js' %}"></script>
@@ -19,7 +22,7 @@
         <nav class="navbar">
             <ul class="navbar-nav">
               <li class="logo">
-                <a href="#" class="nav-link">
+                <a href="{% url 'home' %}" class="nav-link">
                   <span class="link-text logo-text">Heyer.App</span>
                   <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
  width="757.000000pt" height="874.000000pt" viewBox="0 0 757.000000 874.000000"
@@ -131,7 +134,13 @@
               </li>
         
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a 
+                {% if user.is_authenticated %}
+                  href="{% url 'logout' %}" 
+                {% else %}
+                  href="{% url 'login' %}" 
+                {% endif %}
+                class="nav-link">
                   <svg
                     aria-hidden="true"
                     focusable="false"
@@ -155,7 +164,11 @@
                       ></path>
                     </g>
                   </svg>
-                  <span class="link-text">Shuttle</span>
+                  {% if user.is_authenticated %}
+                  <span class="link-text">{{user.username|title}}</span>
+                  {% else %}
+                  <span class="link-text">Login</span>
+                  {% endif %}
                 </a>
               </li>
         

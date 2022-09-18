@@ -14,7 +14,13 @@ router.register(r'portfolio', views.PortfolioViewSet)
 
 urlpatterns = [
     path("", views.home, name="home"),
+    
+    path("accounts/", include("django.contrib.auth.urls"), name="login"),
+    path("accounts/logout", views.auth_logout, name="logout"),
+    path("accounts/signup", views.auth_create, name="create"),
+
     path("terminal/", views.terminal, name="terminal"),
-    path("resumeapi/", include(router.urls))
+    path("resumeapi/", include(router.urls)),
+    
 
 ]
