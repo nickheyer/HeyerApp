@@ -20,6 +20,7 @@ th {
 }
 
 .button {
+  font-family: 'Source Code Pro' !important;
   background-color: var(--bg-primary);
   border: none;
   color: var(--text-secondary);
@@ -34,6 +35,7 @@ th {
 
 .button:hover {
   color: var(--text-primary);
+  -webkit-appearance: none;
 }
 
 .bordered {
