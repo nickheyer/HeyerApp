@@ -33,6 +33,7 @@ th {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  border-radius: 0;
 }
 
 .button:hover {
