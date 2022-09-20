@@ -31,11 +31,12 @@ th {
   font-size: 16px;
   transition-duration: 0.4s;
   -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .button:hover {
   color: var(--text-primary);
-  -webkit-appearance: none;
 }
 
 .bordered {
