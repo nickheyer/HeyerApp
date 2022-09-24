@@ -11,7 +11,26 @@ from . import forms
 
 def home(request):
     return render(request, "Portfolio/index.html")
+
+def skills(request):
+    return render(request, "Portfolio/skills.html")
+
+def experience(request):
+    return render(request, "Portfolio/experience.html")
+
+def education(request):
+    return render(request, "Portfolio/education.html")
     
+def certifications(request):
+    return render(request, "Portfolio/certifications.html")
+
+def portfolio(request):
+    return render(request, "Portfolio/portfolio.html")
+
+
+
+
+
 def terminal(request):
     return render(request, "Portfolio/terminal.html")
 

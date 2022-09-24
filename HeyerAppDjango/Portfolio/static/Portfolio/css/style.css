@@ -1,7 +1,14 @@
+
 .centered{
   margin:auto;
   width:auto;
   color:var(--bg-primary);
+  text-align: center;
+}
+
+.centered-center{
+  margin:auto;
+  width:auto;
   text-align: center;
 }
 
@@ -20,6 +27,7 @@ th {
 }
 
 .button {
+  font-weight: normal;
   font-family: 'Source Code Pro' !important;
   background-color: var(--bg-primary);
   border: none;
@@ -66,6 +74,7 @@ th {
   --bg-primary: #23232e;
   --bg-secondary: #141418;
   --transition-speed: 600ms;
+  
 }
 
 body {
@@ -100,6 +109,7 @@ main {
 }
 
 .navbar-nav {
+  color:var(--bg-primary);
   list-style: none;
   padding: 0;
   margin: 0;
