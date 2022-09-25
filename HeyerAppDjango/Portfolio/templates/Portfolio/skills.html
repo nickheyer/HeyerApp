@@ -3,6 +3,8 @@
 {% block head %}
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
 {% endblock %}
 
 
@@ -14,19 +16,41 @@
     {% endif %}</h1>
   
 
-  {% for item in object_list reversed %}
-  <div class="biz-card simple-border-shadow card text-center">
-    <div class="biz-card-hf card-header">
+  {% for item in object_list %}
+  <div class="biz-card simple-border-shadow card text-center mb-3 back-z">
+    <div class="biz-card-hf card-header back-z">
       {{item.name}}
     </div>
-    <div class="biz-card-body card-body">
-      <img src="{{item.image}}" class="biz-card-img centered-center"/>
-      
-      <a href="{{item.link}}" class="button">Learn More</a>
+
+    <div class="biz-card-body card-body mid-z">
+      <div>
+        <img src="{{item.image}}" class="rounded-start biz-card-img centered-center"/>
+      </div>
+  
+      <div class="dropdown mid-z d-down">
+        {% if item.skills.all %}
+        <button class="button dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Related Projects
+        </button>
+        {% endif %}
+        <ul class="dropdown-menu d-down" >
+          {% for project in item.skills.all %}
+
+            {% if project.live_demo %}
+              <li><a class="dropdown-item button mid-z d-down" href="{{project.live_demo}}">{{project.name}}</a></li>
+            {% elif project.repository %}
+              <li><a class="dropdown-item button mid-z d-down" href="{{project.repository}}">{{project.name}}</a></li>
+            {% else %}
+              <li><a class="dropdown-item button mid-z d-down" href="{% url 'projects' %}">{{project.name}}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+        <a href="{{item.link}}" class="button">Learn More</a>
       {% if user.is_superuser %}
       <a href="{% url 'skill_update' item.id %}" class="button">Update</a>
       <a href="{% url 'skill_delete' item.id %}" class="button">Delete</a>
       {% endif %}
+      </div>
     </div>
     <div class="biz-card-hf card-footer text-muted">
       {{item.years}} Years

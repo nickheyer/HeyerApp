@@ -7,6 +7,25 @@
   font-family: 'Source Code Pro' !important;
 }
 
+.back-z {
+  z-index: 1 !important;
+}
+
+.mid-z {
+  z-index: 10 !important;
+}
+
+.front-z {
+  z-index: 99999 !important;
+}
+
+.card {position: inherit !important;}
+
+.drop-d {
+  overflow: visible !important;
+  position: fixed !important;
+}
+
 .centered{
   margin:auto;
   width:auto;

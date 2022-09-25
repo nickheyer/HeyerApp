@@ -18,7 +18,7 @@
     {% for item in object_list reversed %}
     <div class="biz-card simple-border-shadow card text-center">
       <div class="biz-card-hf card-header">
-        {{item.languages}}
+        {% for skill in item.skill_used.all %}{{skill.name}}{% if not forloop.last %}, {% endif %}{% endfor %}
       </div>
       <div class="biz-card-body card-body">
         <h5 class="card-title">{{item.name }}</h5>
@@ -39,6 +39,9 @@
       </div>
     </div>
     {% endfor %}
+    <div style="margin-top:15px;">
+      <h6 class="centered">And many more <a href="https://github.com/nickheyer?tab=repositories">here</a></h4>
+    </div>
     
     
 
