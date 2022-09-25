@@ -10,8 +10,8 @@
 <main>
     <div class="centered login-form">
         <div class="bordered">
-            <h2>Create Account</h2>
-            <form class="login" method="post" action="{% url 'create' %}">
+            <h2>Create Skill</h2>
+            <form class="login" method="post" action="{% url 'skill_create' %}">
                 <div class="centered-left">
                     {% csrf_token %}
 
@@ -25,7 +25,7 @@
                     {% endfor %}
                     
                 </div>
-                <input class="button" type="submit" value="Sign Up"/>
+                <input class="button" type="submit" value="Create"/>
             </form>
         </div>
     </div>

@@ -19,10 +19,10 @@
     </head>
 
     <body>
-        <nav class="navbar">
-            <ul class="navbar-nav">
+        <nav class="nnavbar">
+            <ul class="nnavbar-nav">
               <li class="logo">
-                <a href="{% url 'home' %}" class="nav-link">
+                <a href="{% url 'home' %}" class="nnav-link">
                   <span class="link-text logo-text">Heyer.App</span>
                   <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
  width="757.000000pt" height="874.000000pt" viewBox="0 0 757.000000 874.000000"
@@ -46,8 +46,8 @@
                 </a>
               </li>
         
-              <li class="nav-item">
-                <a href="{% url 'skills' %}" class="nav-link">
+              <li class="nnav-item">
+                <a href="{% url 'skills' %}" class="nnav-link">
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                 <g class="fa-group">
@@ -81,8 +81,8 @@
                 </a>
               </li>
         
-              <li class="nav-item">
-                <a href="{% url 'experience' %}" class="nav-link">
+              <li class="nnav-item">
+                <a href="{% url 'experience' %}" class="nnav-link">
                   
 
                   <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -174,8 +174,8 @@
                 </a>
               </li>
         
-              <li class="nav-item">
-                <a href="{% url 'education' %}" class="nav-link">
+              <li class="nnav-item">
+                <a href="{% url 'education' %}" class="nnav-link">
                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 392.471 392.471" style="enable-background:new 0 0 392.471 392.471;" xml:space="preserve">
                   <path style="fill:#081C1F;" d="M371.923,152.567c8.986-15.774,9.891-35.168,1.875-52.105c-9.438-19.846-29.996-32.388-51.717-31.806
@@ -285,8 +285,8 @@
                 </a>
               </li>
 
-              <li class="nav-item">
-                <a href="{% url 'certifications' %}" class="nav-link">
+              <li class="nnav-item">
+                <a href="{% url 'certifications' %}" class="nnav-link">
                   
 
                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -345,8 +345,8 @@
                 </a>
               </li>
 
-              <li class="nav-item">
-                <a href="{% url 'portfolio' %}" class="nav-link">
+              <li class="nnav-item">
+                <a href="{% url 'projects' %}" class="nnav-link">
                   
                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                   viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
@@ -356,7 +356,7 @@
                  V293.284z"/>
                </svg>
                
-               <span class="link-text">Portfolio</span>
+               <span class="link-text">Projects</span>
                 </a>
               </li>
 
@@ -368,14 +368,14 @@
 
 
 
-              <li class="nav-item">
+              <li class="nnav-item">
                 <a 
                 {% if user.is_authenticated %}
                   href="{% url 'logout' %}"
                 {% else %}
                   href="{% url 'login' %}" 
                 {% endif %}
-                class="nav-link">
+                class="nnav-link">
 
 
 

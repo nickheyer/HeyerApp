@@ -5,31 +5,37 @@
 
 {% endblock %}
 
+
 {% block content %}
   
 
   <main>
-    <h1>Education {% if user.is_superuser %}
-      <a style="float:right; margin-top:15px; margin-right: 30px;" href="{% url 'education_create' %}" class="button">Add an education</a>
+    <h1>Projects {% if user.is_superuser %}
+      <a style="float:right; margin-top:15px; margin-right: 30px;" href="{% url 'project_create' %}" class="button">Add a project</a>
       {% endif %}</h1>
     
 
     {% for item in object_list reversed %}
     <div class="biz-card simple-border-shadow card text-center">
       <div class="biz-card-hf card-header">
-        {{item.institute}}
+        {{item.languages}}
       </div>
       <div class="biz-card-body card-body">
-        <img src="{{item.image}}" class="biz-card-img centered-center simple-border-shadow"/>
-      
-        <a href="{{item.link}}" class="button">Learn More</a>
+        <h5 class="card-title">{{item.name }}</h5>
+        <p class="card-text">{{item.description}}</p>
+        {% if item.repository %}
+        <a href="{{item.repository}}" class="button">Repository</a>
+        {% endif %}
+        {% if item.live_demo %}
+        <a href="{{item.live_demo}}" class="button">Live</a>
+        {% endif %}
         {% if user.is_superuser %}
-        <a href="{% url 'education_update' item.id %}" class="button">Update</a>
-        <a href="{% url 'education_delete' item.id %}" class="button">Delete</a>
+        <a href="{% url 'project_update' item.id %}" class="button">Update</a>
+        <a href="{% url 'project_delete' item.id %}" class="button">Delete</a>
         {% endif %}
       </div>
       <div class="biz-card-hf card-footer text-muted">
-        {{item.start_year}} -> {{item.end_year}}
+        {{item.year_created}}
       </div>
     </div>
     {% endfor %}

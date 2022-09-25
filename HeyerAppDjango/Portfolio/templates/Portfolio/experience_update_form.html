@@ -1,24 +1,24 @@
 {% extends "base.html" %}
 
 {% block head %}
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
 {% endblock %}
 
 
 {% block content %}
 <main>
-    <div class="centered centered-height login-form">
+    <div class="centered login-form">
         <div class="bordered">
-            <h2>Please login</h2>
-            <form class="login" method="post">
-                <div>
+            <h2>Update Experience</h2>
+            <form class="login" method="post" action="">
+                <div class="centered-left">
                     {% csrf_token %}
-                    {{ form.as_p }}
-                    <input class="button" type="submit" value="Login"/>
+
+                    {{form.as_p}}
                     
-                    <a href="{% url 'create' %}" class="button">Create</a>
                 </div>
+                <input class="button" type="submit" value="Update"/>
             </form>
         </div>
     </div>

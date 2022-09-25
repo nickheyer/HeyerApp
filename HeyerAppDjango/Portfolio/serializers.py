@@ -22,7 +22,7 @@ class CertificationSerializer(serializers.ModelSerializer):
         model = models.Certification
         fields = ('__all__')
 
-class PortfolioSerializer(serializers.ModelSerializer):
+class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.Portfolio
+        model = models.Project
         fields = ('__all__')
