@@ -53,6 +53,20 @@ th {
 
 }
 
+.divParent {
+  width: 100%;
+}
+
+.divContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+  width:auto;
+  margin:auto;
+  justify-content: center;
+}
+
 .button {
   font-weight: normal;
   font-family: 'Source Code Pro' !important;
@@ -90,10 +104,12 @@ th {
 }
 
 .biz-card {
-  margin: auto;
+  max-width:24rem;
+  margin: 0.25rem;
   font-size: 16px;
   color: var(--bg-secondary);
-  z-index: 1 !important;
+
+
 }
 
 .biz-card-hf {
@@ -113,9 +129,19 @@ th {
   margin-bottom: 20px;
 }
 
+.biz-card:hover {
+  transform: scale(115%);
+  box-shadow: 0 20px 20px rgba(0.4, 0.4, 0.4, 0.4);
+  transition: var(--transition-speed) ease-in-out;
+  z-index: 999999 !important;
+  overflow: visible !important;
+  position: relative !important;
+}
+
+
 
 :root {
-  font-size: 32px;
+  font-size: 24px;
   font-family: 'Source Code Pro' !important;
   --text-primary: #f2e900 ;
   --text-secondary: #02d7f2;
