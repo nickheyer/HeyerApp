@@ -168,6 +168,26 @@ th {
   width:60vw !important;
 }
 
+.scrolltainer {
+  overflow-y:auto !important;
+  scroll-padding: 15px;
+}
+
+.toastainer {
+  width:100% !important;
+  background-color:var(--body-primary) !important;
+  
+}
+
+.toast-dot {
+  fill: var(--text-secondary);
+}
+
+.toast-head {
+  background-color: var(--bg-primary) !important;
+}
+
+
 :root {
   font-size: 24px;
   font-family: 'Source Code Pro' !important;
@@ -209,7 +229,7 @@ main {
   position: fixed;
   background-color: var(--bg-primary);
   transition: width 600ms ease;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .nnavbar-nav {
