@@ -152,7 +152,7 @@ th {
 .biz-card-noanim {
   max-width:36rem;
   margin: 0.25rem;
-  font-size: 16px;
+  font-size: 16px !important;
   color: var(--bg-secondary);
 }
 

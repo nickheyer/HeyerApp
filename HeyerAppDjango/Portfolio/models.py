@@ -95,10 +95,11 @@ class Project(models.Model):
 class FeedEvent(models.Model):
     source = models.CharField(verbose_name="Source", max_length =256, name = "source")
     description = models.CharField(verbose_name="Description", max_length = 2048, name = "description", default=None)
+    link = models.URLField(verbose_name="Link", max_length=256, default= None)
     eventdate = models.DateTimeField(verbose_name="Date and Time of Event", name = "eventdate", default=now)
 
     class Meta:
-        ordering = ["eventdate"]
+        ordering = ["-eventdate"]
         verbose_name = "Feed Event"
         verbose_name_plural = "Feed Events"
 
