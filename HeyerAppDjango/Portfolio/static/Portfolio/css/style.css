@@ -99,6 +99,7 @@ th {
   color: var(--text-primary);
 }
 
+
 .bordered {
   border: 2px solid black;
   width: fit-content;
