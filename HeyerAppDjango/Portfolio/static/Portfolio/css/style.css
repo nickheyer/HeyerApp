@@ -322,11 +322,11 @@ main {
 }
 
 /* Small screens */
-/* @media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
   .nnavbar {
     bottom: 0;
     width: 100vw;
-    height: 5rem;
+    height: 3rem;
   }
 
   .nnavbar-nav {
@@ -346,7 +346,19 @@ main {
   main {
     margin: 0;
   }
-} */
+
+  :root {
+    font-size: 12px;
+    font-family: 'Source Code Pro' !important;
+    --text-primary: #f2e900 ;
+    --text-secondary: #02d7f2;
+    --bg-primary: #23232e;
+    --bg-secondary: #141418;
+    --body-primary: #dad0c0;
+    --transition-speed: 600ms;
+    
+  }
+}
 
 /* Large screens */
 @media only screen and (min-width: 600px) {
