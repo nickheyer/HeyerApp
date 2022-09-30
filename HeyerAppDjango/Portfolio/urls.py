@@ -3,12 +3,15 @@ from rest_framework import routers
 from . import views
 
 
-router = routers.DefaultRouter()
-router.register(r'skills', views.SkillViewSet)
-router.register(r'experience', views.ExperienceViewSet)
-router.register(r'education', views.EducationViewSet)
-router.register(r'certifications', views.CertificationViewSet)
-router.register(r'projects', views.ProjectViewSet)
+resumeapi = routers.DefaultRouter()
+resumeapi.register(r'skills', views.SkillViewSet)
+resumeapi.register(r'experience', views.ExperienceViewSet)
+resumeapi.register(r'education', views.EducationViewSet)
+resumeapi.register(r'certifications', views.CertificationViewSet)
+resumeapi.register(r'projects', views.ProjectViewSet)
+
+miscapi = routers.DefaultRouter()
+miscapi.register(r'feedevent', views.FeedEventViewSet)
 
 
 
@@ -47,7 +50,7 @@ urlpatterns = [
 
     path("terminal/", views.Terminal.as_view(), name="terminal"),
 
-    path("resumeapi/", include(router.urls)),
-    
+    path("resumeapi/", include(resumeapi.urls)),
+    path("miscapi/", include(miscapi.urls)),
 
 ]

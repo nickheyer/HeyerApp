@@ -190,3 +190,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, permissions.DjangoModelPermissionsOrAnonReadOnly,]
     queryset = models.Project.objects.all()
     serializer_class = serializers.ProjectSerializer
+
+class FeedEventViewSet(viewsets.ModelViewSet):
+    queryset = models.FeedEvent.objects.all()
+    serializer_class = serializers.FeedEventSerializer

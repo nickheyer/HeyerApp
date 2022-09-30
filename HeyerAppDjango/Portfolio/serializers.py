@@ -26,3 +26,8 @@ class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Project
         fields = ('__all__')
+
+class FeedEventSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.FeedEvent
+        fields = ('__all__')
