@@ -9,5 +9,6 @@ admin.site.register(
         models.Experience, 
         models.Education, 
         models.Certification,
-        models.Project
+        models.Project,
+        models.FeedEvent
     ])

@@ -15,11 +15,20 @@ from . import models
 from . import serializers
 from . import forms
 
-
+from datetime import datetime as dt
+from datetime import timedelta
 
 class Home(TemplateView):
     template_name = "Portfolio/index.html"
+    model = models.FeedEvent
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        startdate = dt.now()
+        enddate = startdate + timedelta(days=6)
+        context['Description'] = models.FeedEvent.objects.filter(eventdate__gte=startdate, eventdate__lte=enddate)
+        
+        return context
 
 
 class Skills(ListView):

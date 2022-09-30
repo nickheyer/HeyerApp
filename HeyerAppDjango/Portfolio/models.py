@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.timezone import now
 
-# Create your models here.
+
 class Skill(models.Model):
     name = models.CharField(verbose_name="Name", max_length = 256, name = "name")
     years = models.IntegerField(verbose_name="Years", name="years")
@@ -91,3 +91,19 @@ class Project(models.Model):
 
     def get_absolute_url(self):
         return '/projects'
+
+class FeedEvent(models.Model):
+    source = models.CharField(verbose_name="Source", max_length =256, name = "source")
+    description = models.CharField(verbose_name="Description", max_length = 2048, name = "description", default=None)
+    eventdate = models.DateTimeField(verbose_name="Date and Time of Event", name = "eventdate", default=now)
+
+    class Meta:
+        ordering = ["eventdate"]
+        verbose_name = "Feed Event"
+        verbose_name_plural = "Feed Events"
+
+    def __str__(self):
+        return self.source
+
+    def get_absolute_url(self):
+        return '/'  
