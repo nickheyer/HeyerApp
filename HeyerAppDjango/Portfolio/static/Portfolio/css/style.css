@@ -349,13 +349,6 @@ main {
 
   :root {
     font-size: 12px;
-    font-family: 'Source Code Pro' !important;
-    --text-primary: #f2e900 ;
-    --text-secondary: #02d7f2;
-    --bg-primary: #23232e;
-    --bg-secondary: #141418;
-    --body-primary: #dad0c0;
-    --transition-speed: 600ms;
     
   }
 }
