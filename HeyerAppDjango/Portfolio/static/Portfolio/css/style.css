@@ -326,7 +326,7 @@ main {
   .nnavbar {
     bottom: 0;
     width: 100vw;
-    height: 5rem;
+    height: 4rem;
   }
 
   .nnavbar-nav {
@@ -350,6 +350,10 @@ main {
   :root {
     font-size: 12px;
     
+  }
+
+  .biz-card:hover {
+    transform: none !important;
   }
 }
 
