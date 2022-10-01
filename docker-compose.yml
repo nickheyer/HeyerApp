@@ -10,7 +10,8 @@ services:
     expose:
       - "8000"
     image: nickheyer/heyerapp-django:latest
-  
+    env_file:
+      - ./.env
 
 
   nginx:
