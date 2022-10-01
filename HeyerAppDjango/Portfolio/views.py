@@ -193,6 +193,5 @@ class ProjectViewSet(viewsets.ModelViewSet):
 
 class FeedEventViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly,]
-
     queryset = models.FeedEvent.objects.all()
     serializer_class = serializers.FeedEventSerializer
