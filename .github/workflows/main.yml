@@ -75,4 +75,4 @@ jobs:
           url: 'https://heyer.app/miscapi/feedevent/'
           method: 'POST'
           customHeaders: '{"Content-Type": "application/json", "Authorization":"${{ secrets.FEED_TOKEN }}"}'
-          data: '{"source": "Github", "description": "Pushed commit to ${{github.event.repository.full_name}}", "link":"${{github.event.repository.url}}"}'
+          data: '{"source": "Github", "description": "Pushed commit to ${{github.event.repository.full_name}}: ${{github.event.payload.comment}}", "link":"${{github.event.repository.url}}"}'
