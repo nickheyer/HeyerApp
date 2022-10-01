@@ -11,7 +11,7 @@ services:
       - "8000"
     image: nickheyer/heyerapp-django:latest
     environment:
-      SECRET_KEY: ${SECRET_KEY}
+      - SECRET_KEY=${SECRET_KEY}
 
 
   nginx:
@@ -29,7 +29,7 @@ services:
       - heyerapp_django
     image: nickheyer/heyerapp-nginx:latest
     
-    
+
 volumes:
   nginx_secrets:
   static:
