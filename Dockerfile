@@ -7,7 +7,5 @@ RUN pip install -r requirements.txt
 COPY ./HeyerAppDjango /app 
 WORKDIR /app
 
-COPY ./environment/django.env /app/HeyerAppDjango/HeyerAppDjango
-
 COPY ./entry.sh /
 ENTRYPOINT [ "sh", "/entry.sh" ]
