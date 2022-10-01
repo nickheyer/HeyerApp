@@ -57,7 +57,7 @@ jobs:
           cd $GITHUB_WORKSPACE
           sudo docker-compose down
           sudo docker-compose pull
-          sudo SECRET_KEY=${SECRET_KEY} docker-compose up -d --build
+          sudo SECRET_KEY=$${SECRET_KEY} docker-compose up -d --build
           sudo docker image prune -f
 
   
