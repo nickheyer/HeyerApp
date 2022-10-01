@@ -10,8 +10,8 @@ services:
     expose:
       - "8000"
     image: nickheyer/heyerapp-django:latest
-    environment:
-      - SECRET_KEY=${SECRET_KEY}
+    env_file:
+      - .env
 
 
   nginx:
