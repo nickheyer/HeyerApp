@@ -57,7 +57,7 @@ jobs:
           cd $GITHUB_WORKSPACE
           sudo docker-compose down
           sudo docker-compose pull
-          sudo docker-compose up -d --build --env-file '/home/ubuntu/environment/django.env'
+          sudo docker-compose --env-file '/home/ubuntu/environment/django.env' up -d --build 
           sudo docker image prune -f
 
   
