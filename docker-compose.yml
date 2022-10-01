@@ -12,7 +12,7 @@ services:
       - "8000"
     image: nickheyer/heyerapp-django:latest
     env_file:
-      - ./environment/.env
+      - ./environment/django.env
 
 
   nginx:
