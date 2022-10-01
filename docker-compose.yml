@@ -5,7 +5,6 @@ services:
   heyerapp_django:
     volumes:
       - static:/static
-      - environment:/environment
     build:
       context: .
     expose:
