@@ -11,7 +11,7 @@ services:
       - "8000"
     image: nickheyer/heyerapp-django:latest
     env_file:
-      - ~/environment/django.env
+      - ~/home/ubuntu/environment/django.env
 
   nginx:
     build: ./nginx
