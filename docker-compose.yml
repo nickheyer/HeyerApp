@@ -5,11 +5,14 @@ services:
   heyerapp_django:
     volumes:
       - static:/static
+      - environment:/environment
     build:
       context: .
     expose:
       - "8000"
     image: nickheyer/heyerapp-django:latest
+    env_file:
+      - ./environment/.env
 
 
   nginx:
@@ -31,3 +34,4 @@ services:
 volumes:
   nginx_secrets:
   static:
+  environment:
