@@ -119,10 +119,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'django',
-        'HOST': 'heyerapp-remote.craatzylariv.us-east-2.rds.amazonaws.com',
-        'USER': 'nickheyer',
-        'PASSWORD': '1browser',
-        'PORT': '5432'
+        'HOST': env('DB_HOST'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASS'),
+        'PORT': env('DB_PORT')
     }
 }
 
