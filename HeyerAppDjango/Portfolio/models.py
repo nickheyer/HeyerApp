@@ -19,6 +19,7 @@ class Skill(models.Model):
     def get_absolute_url(self):
         return '/skills'
 
+
 class Experience(models.Model):
     company = models.CharField(verbose_name="Company", max_length = 256, name = "company")
     position = models.CharField(verbose_name="Position", max_length = 256, name = "position", default=None)
