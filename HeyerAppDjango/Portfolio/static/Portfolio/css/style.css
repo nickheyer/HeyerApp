@@ -234,7 +234,6 @@ main {
   position: fixed;
   background-color: var(--bg-primary);
   transition: width 600ms ease;
-  overflow: auto;
 }
 
 .nnavbar-nav {
@@ -344,7 +343,8 @@ main {
   .nnavbar {
     bottom: 0;
     width: 100vw;
-    height: 4rem;
+    height: max-content !important;
+    overflow: none;
   }
 
   .nnavbar-nav {
@@ -386,6 +386,7 @@ main {
     top: 0;
     width: 5rem;
     height: 100vh;
+    overflow: auto;
   }
 
   .nnavbar:hover {
