@@ -336,6 +336,11 @@ main {
     font-size: 12px;
   }
 
+  .biz-card-noanim {
+    max-width: 24rem;
+  }
+
+
   .nnavbar {
     bottom: 0;
     width: 100vw;
