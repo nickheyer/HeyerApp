@@ -7,6 +7,8 @@
   font-family: 'Source Code Pro' !important;
 }
 
+
+
 .back-z {
   z-index: 1 !important;
 }
@@ -54,7 +56,13 @@ th {
 }
 
 .divParent {
-  width: 100%;
+  display: grid;
+  grid-template-columns: auto repeat(2, auto);
+  grid-template-rows: auto 1fr;
+  width:auto;
+  margin:auto;
+  justify-content: center;
+
 }
 
 .divContainer {
@@ -69,9 +77,9 @@ th {
 
 .divContainer-grid {
   display: grid;
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
-
+  
   width:auto;
   margin:auto;
   justify-content: center;
@@ -151,27 +159,25 @@ th {
 
 
 .biz-card-noanim {
-  max-width:36rem;
+  max-width:40rem;
   margin: 0.25rem;
+  margin-top: 0 !important;
   font-size: 16px !important;
   color: var(--bg-secondary);
 }
 
-.biz-card-top {
-  height:65vh !important;
-}
-
-.biz-card-bottom {
-  height:20vh !important;
+.side-card{
+  max-height:30vh !important;
 }
 
 .feed-card {
-  width:60vw !important;
+  height:90vh !important;
 }
 
 .scrolltainer {
   overflow-y:auto !important;
   scroll-padding: 15px;
+  
 }
 
 .toastainer {
