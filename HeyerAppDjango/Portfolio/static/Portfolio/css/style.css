@@ -343,8 +343,8 @@ main {
   .nnavbar {
     bottom: 0;
     width: 100vw;
-    height: max-content !important;
-    overflow: none;
+    height: auto !important;
+    overflow:hidden;
   }
 
   .nnavbar-nav {
