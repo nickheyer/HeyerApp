@@ -41,10 +41,6 @@
   text-align: center;
 }
 
-.centered-height{
-  margin-top: 20%;
-}
-
 .centered-left{
   text-align: left;
 }
@@ -58,7 +54,7 @@ th {
 .divParent {
   display: grid;
   grid-template-columns: auto repeat(2, auto);
-  grid-template-rows: auto 1fr;
+  grid-template-rows: repeat(auto-fill, auto);
   max-width: fit-content !important;
   width:auto;
   margin:auto;
@@ -160,8 +156,7 @@ th {
 
 
 .biz-card-noanim {
-  max-width: 90vw !important;
-  width:40rem;
+  max-width:40rem;
   margin: 0.25rem;
   margin-top: 0 !important;
   font-size: 16px !important;
@@ -170,6 +165,7 @@ th {
 
 .side-card{
   max-height:30vh !important;
+  align-self: center;
 }
 
 .feed-card {
@@ -331,9 +327,13 @@ main {
 }
 
 /* Small screens */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
+  p {
+    font-size: inherit !important;
+  }
+
   .biz-card-body {
-    font-size: 12px !important;
+    font-size: 12px;
   }
 
   .nnavbar {
@@ -376,7 +376,7 @@ main {
 }
 
 /* Large screens */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 800px) {
   .nnavbar {
     top: 0;
     width: 5rem;
