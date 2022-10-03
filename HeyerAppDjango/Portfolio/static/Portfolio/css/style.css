@@ -333,11 +333,11 @@ main {
   }
 
   .biz-card-body {
-    font-size: 12px;
+    font-size: 12px !important;
   }
 
   .biz-card-noanim {
-    max-width: 24rem;
+    max-width: 50vw;
   }
 
 
