@@ -194,7 +194,8 @@ def add_feed(sender, **kwargs):
         title = instance.institute
     models.FeedEvent.objects.create(
         source="Heyer.App",
-        link=instance.link,
+
+        link=instance.link if hasattr(instance, "link") else "",
 
         description=f"Added {sender.__name__}{': ' if title else ''}{title}"
     )
