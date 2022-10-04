@@ -1,138 +1,173 @@
-{% extends "base.html" %}
-
-{% block head %}
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+{% extends "base.html" %} {% block head %}
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+  crossorigin="anonymous"
+/>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+  crossorigin="anonymous"
+></script>
 
 {% load static %}
 <script src="{% static 'Portfolio/javascript/source.js' %}"></script>
-{% endblock %}
-
-
-{% block content %}
-
+{% endblock %} {% block content %}
 
 <main>
   <h1>Heyer.App</h1>
 
-  <div class="divParent"> 
+  <div class="divParent">
     <div class="divContainer-left">
-    
-    <div class="biz-card-noanim feed-card card text-center biz-card-top">
-      
-      <div class="biz-card-body card-body scrolltainer">
-        <h5 class="card-title">The Feed</h5>
-        
+      <div class="biz-card-noanim feed-card card text-center biz-card-top">
+        <div class="biz-card-body card-body scrolltainer">
+          <h5 class="card-title">The Feed</h5>
 
+          <div class="toast-container position-static toastainer">
+            {% for event in events %}
+            <div
+              class="toast fade show toastainer"
+              role="alert"
+              aria-live="assertive"
+              aria-atomic="true"
+            >
+              <div class="toast-header toast-head">
+                <svg
+                  class="bd-placeholder-img rounded me-2 toast-dot"
+                  width="20"
+                  height="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  preserveAspectRatio="xMidYMid slice"
+                  focusable="false"
+                >
+                  <rect width="100%" height="100%"></rect>
+                </svg>
 
+                <strong class="me-auto">
+                  {% if event.link %}
+                  <a href="{{event.link}}" style="text-decoration: none"
+                    >{{event.source}}</a
+                  >
+                  {% else %} {{event.source}} {% endif %}
+                </strong>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="toast-container position-static toastainer">
-
-
-
-          {% for event in events %}
-          <div class="toast fade show toastainer" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header toast-head">
-              <svg class="bd-placeholder-img rounded me-2 toast-dot" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <rect width="100%" height="100%"></rect></svg>
-        
-              <strong class="me-auto">
-
-                {% if event.link %}
-                <a href="{{event.link}}" style="text-decoration:none">{{event.source}}</a>
-                {% else %}
-                {{event.source}}
-                {% endif %}
-              
-              </strong>
-                  
-              <button type="button" class="btn-close btn-close-white close-button" data-bs-dismiss="toast" aria-label="Close"></button>
-
+                <button
+                  type="button"
+                  class="btn-close btn-close-white close-button"
+                  data-bs-dismiss="toast"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="toast-body">
+                <p>{{event.description}}</p>
+                <small class="text-muted"
+                  >{{event.eventdate|date:"m-d-Y h:i A"}}</small
+                >
+              </div>
             </div>
-            <div class="toast-body">
-              <p>{{event.description}}</p>
-              <small class="text-muted">{{event.eventdate|date:"m-d-Y h:i A"}}</small> 
-            </div>
+
+            {% endfor %}
           </div>
-
-          {% endfor %}
         </div>
-        
-
       </div>
     </div>
-    </div>
-
 
     <div class="div-container-grid vertical-center">
-      <div class="biz-card-noanim side-card  card text-center biz-card-top scrolltainer">
-        
+      <div
+        class="biz-card-noanim side-card card text-center biz-card-top scrolltainer"
+      >
         <div class="biz-card-body card-body">
-          <h5 class="card-title">Current Status</h5>
-          <p class="card-text">
-            -- SITE CURRENTLY IN DEVELOPMENT, PLACEHOLDER TEXT -- Kitsch coloring book retro, seitan schlitz
-            tattooed biodiesel vexillologist neutra. Synth mumblecore deep v, umami
-            selfies normcore gluten-free snackwave. Seitan ramps drinking vinegar
-            venmo keytar, humblebrag VHS post-ironic tacos godard pour-over.
-          </p>
-          
+          <div class="card mb-3 toastainer">
+            <div class="row g-0">
+              <div class="col-md-4">
+                {% if status.currentStatus.spotifyAlbumCoverUrl %}
+                <img
+                  src="{{status.currentStatus.spotifyAlbumCoverUrl}}"
+                  class="img-fluid rounded-start"
+                  alt="{{status.currentStatus.spotifyAlbum}}"
+                />
+                {% else %}
+                <img src="..." class="img-fluid rounded-start" alt="..." />
+                {% endif %}
+              </div>
+              <div class="col-md-8">
+                <div class="card-body list-group-card">
+                  <h5 class="card-title">Current Status</h5>
+                  <ul class="list-group list-group-flush">
+                    {% if not status.currentStatus|length > 0 %}
+                    <li class="list-group-item">
+                      Offline, probably sleeping or working. Check back later
+                    </li>
+                    {% else %} {% if status.currentStatus.spotifyTitle %}
+                    <li class="list-group-item">
+                      Playing
+                      <a
+                        style="text-decoration: none"
+                        href="{{status.currentStatus.spotifyTrackUrl}}"
+                        >{{status.currentStatus.spotifyTitle}}</a
+                      >
+                      by {{status.currentStatus.spotifyArtist}} from
+                      {{status.currentStatus.spotifyAlbum}}
+                    </li>
+                    {% endif %} {% if status.currentStatus.activityDetails %}
+                    <li class="list-group-item"> 
+                      {{status.currentStatus.activityDetails}} in
+                      {{status.currentStatus.activityName}}
+                      {% if status.currentStatus.activityState %}
+                      ({{status.currentStatus.activityState}})
+                      {% endif %}
+                      {% if status.currentStatus.activityUrl %}
+                      <a href="status.currentStatus.activityUrl" style="text-decoration: none"> here</a>
+                      {% endif %}
+                    </li>
+                    {% endif %} {% endif %}
+                  </ul>
+
+                  <p class="card-text">
+                    <small class="text-muted"
+                      >Last updated {{status.eventdate|date:"m-d-Y h:iA"}}</small
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-
-
-      
-      <div class="biz-card-noanim side-card card text-center biz-card-bottom scrolltainer">
-        
+      <div
+        class="biz-card-noanim side-card card text-center biz-card-bottom scrolltainer"
+      >
         <div class="biz-card-body card-body">
           <h5 class="card-title">The Links</h5>
           <p class="card-text">
-            -- SITE CURRENTLY IN DEVELOPMENT, PLACEHOLDER TEXT -- Kitsch coloring book retro, seitan schlitz
-            tattooed biodiesel vexillologist neutra. Synth mumblecore deep v, umami
-            selfies normcore gluten-free snackwave. Seitan ramps drinking vinegar
-            venmo keytar, humblebrag VHS post-ironic tacos godard pour-over.
+            -- SITE CURRENTLY IN DEVELOPMENT, PLACEHOLDER TEXT -- Kitsch
+            coloring book retro, seitan schlitz tattooed biodiesel vexillologist
+            neutra. Synth mumblecore deep v, umami selfies normcore gluten-free
+            snackwave. Seitan ramps drinking vinegar venmo keytar, humblebrag
+            VHS post-ironic tacos godard pour-over.
           </p>
-          
         </div>
       </div>
-      
-      <div class="biz-card-noanim side-card  card text-center biz-card-bottom scrolltainer">
-            
+
+      <div
+        class="biz-card-noanim side-card card text-center biz-card-bottom scrolltainer"
+      >
         <div class="biz-card-body card-body">
           <h5 class="card-title">Contact</h5>
           <p class="card-text">
-            -- SITE CURRENTLY IN DEVELOPMENT, PLACEHOLDER TEXT -- Kitsch coloring book retro, seitan schlitz
-            tattooed biodiesel vexillologist neutra. Synth mumblecore deep v, umami
-            selfies normcore gluten-free snackwave. Seitan ramps drinking vinegar
-            venmo keytar, humblebrag VHS post-ironic tacos godard pour-over.
+            -- SITE CURRENTLY IN DEVELOPMENT, PLACEHOLDER TEXT -- Kitsch
+            coloring book retro, seitan schlitz tattooed biodiesel vexillologist
+            neutra. Synth mumblecore deep v, umami selfies normcore gluten-free
+            snackwave. Seitan ramps drinking vinegar venmo keytar, humblebrag
+            VHS post-ironic tacos godard pour-over.
           </p>
-          
         </div>
       </div>
-    
-
+    </div>
   </div>
-</div> 
-
-
-
-
 </main>
-
-
-
 
 {% endblock %}

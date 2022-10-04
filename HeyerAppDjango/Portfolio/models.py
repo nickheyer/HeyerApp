@@ -109,3 +109,7 @@ class FeedEvent(models.Model):
 
     def get_absolute_url(self):
         return '/'  
+
+class StatusEvent(models.Model):
+    current_status = models.JSONField(verbose_name="Current Status", name = "currentStatus")
+    eventdate = models.DateTimeField(verbose_name="Date and Time of Event", name = "eventdate", auto_now_add=True)

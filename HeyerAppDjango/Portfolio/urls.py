@@ -12,6 +12,7 @@ resumeapi.register(r'projects', views.ProjectViewSet)
 
 miscapi = routers.DefaultRouter()
 miscapi.register(r'feedevent', views.FeedEventViewSet)
+miscapi.register(r'statusevent', views.StatusEventViewSet)
 
 
 

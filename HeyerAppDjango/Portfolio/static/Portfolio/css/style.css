@@ -184,6 +184,10 @@ th {
   
 }
 
+.list-group-item {
+  background-color:var(--body-primary) !important;
+}
+
 .toast-dot {
   fill: var(--text-secondary);
 }
@@ -344,7 +348,7 @@ main {
     bottom: 0;
     width: 100vw;
     height: auto !important;
-    overflow:hidden;
+    overflow: scroll !important;
   }
 
   .nnavbar-nav {

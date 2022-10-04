@@ -31,3 +31,8 @@ class FeedEventSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.FeedEvent
         fields = ('__all__')
+
+class StatusEventSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.StatusEvent
+        fields = ('__all__')

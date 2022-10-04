@@ -37,7 +37,8 @@ class Home(TemplateView):
         else:
             context['events'] = models.FeedEvent.objects.filter(
                 eventdate__gte=startdate - timedelta(days=120))
-
+        context['status'] = models.StatusEvent.objects.latest('id')
+        print(context)
         return context
 
 
@@ -241,3 +242,8 @@ class FeedEventViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]
     queryset = models.FeedEvent.objects.all()
     serializer_class = serializers.FeedEventSerializer
+
+class StatusEventViewSet(viewsets.ModelViewSet):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]
+    queryset = models.StatusEvent.objects.all()
+    serializer_class = serializers.StatusEventSerializer
