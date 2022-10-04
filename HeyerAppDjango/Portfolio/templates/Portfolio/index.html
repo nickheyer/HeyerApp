@@ -89,7 +89,7 @@
                   alt="{{status.currentStatus.spotifyAlbum}}"
                 />
                 {% else %}
-                <img src="..." class="img-fluid rounded-start" alt="..." />
+                <img src="{% static 'Portfolio/images/heyerapplogo_large.png' %}" class="img-fluid rounded-start" alt="heyerapplogo" />
                 {% endif %}
               </div>
               <div class="col-md-8">
@@ -111,7 +111,8 @@
                       by {{status.currentStatus.spotifyArtist}} from
                       {{status.currentStatus.spotifyAlbum}}
                     </li>
-                    {% endif %} {% if status.currentStatus.activityDetails %}
+                    {% endif %}
+                    {% if status.currentStatus.activityDetails %}
                     <li class="list-group-item"> 
                       {{status.currentStatus.activityDetails}} in
                       {{status.currentStatus.activityName}}
@@ -122,7 +123,14 @@
                       <a href="status.currentStatus.activityUrl" style="text-decoration: none"> here</a>
                       {% endif %}
                     </li>
-                    {% endif %} {% endif %}
+                    
+                    {% elif status.currentStatus.activityName and status.currentStatus.activityType  %}
+                    <li class="list-group-item"> 
+                      {{status.currentStatus.activityType|title}} ->
+                      {{status.currentStatus.activityName}}
+                    </li>
+                    {% endif %}
+                    {% endif %}
                   </ul>
 
                   <p class="card-text">

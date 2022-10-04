@@ -38,7 +38,6 @@ class Home(TemplateView):
             context['events'] = models.FeedEvent.objects.filter(
                 eventdate__gte=startdate - timedelta(days=120))
         context['status'] = models.StatusEvent.objects.latest('id')
-        print(context)
         return context
 
 
