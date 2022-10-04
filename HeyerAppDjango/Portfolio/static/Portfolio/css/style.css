@@ -72,11 +72,19 @@ th {
   justify-content: center;
 }
 
+.divContainer-left{
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  width:auto;
+  margin: 0 auto auto auto;
+
+}
+
 .divContainer-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr;
-  
+  grid-template-columns: 1fr !important;
+  grid-template-rows: 1fr min-content min-content !important;
   width:auto;
   margin:auto;
   justify-content: center;
@@ -164,7 +172,7 @@ th {
 }
 
 .side-card{
-  max-height:30vh !important;
+  max-height:min-content !important;
   align-self: center;
 }
 
@@ -176,6 +184,11 @@ th {
   overflow-y:auto !important;
   scroll-padding: 15px;
   
+}
+
+.stat-card {
+  overflow:visible !important;
+  height:50vh !important;
 }
 
 .toastainer {
