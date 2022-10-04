@@ -151,7 +151,7 @@ class ProjectCreate(mixins.AdminRequiredMixin, CreateView):
 class ProjectDelete(mixins.AdminRequiredMixin, DeleteView):
     model = models.Project
     template_name = "Portfolio/project_delete_form.html"
-    success_url = "/portfolio"
+    success_url = "/projects"
 
 
 class ProjectUpdate(mixins.AdminRequiredMixin, UpdateView):
@@ -192,10 +192,19 @@ def add_feed(sender, **kwargs):
         title = instance.cert_name
     elif sender == models.Education:
         title = instance.institute
+
+    link_field = ""
+    if hasattr(instance, "link"):
+        link_field = instance.link
+    elif hasattr(instance, "repository"):
+        link_field = instance.repository
+    elif hasattr(instance, "live_demo"):
+        link_field = instance.live_demo
+        
     models.FeedEvent.objects.create(
         source="Heyer.App",
 
-        link=instance.link if hasattr(instance, "link") else "",
+        link=link_field,
 
         description=f"Added {sender.__name__}{': ' if title else ''}{title}"
     )
