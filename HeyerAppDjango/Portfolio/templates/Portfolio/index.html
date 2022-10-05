@@ -89,6 +89,12 @@
                   class="img-fluid rounded-start"
                   alt="{{status.currentStatus.spotifyAlbum}}"
                 />
+                {% elif status.currentStatus.imageUrl %}
+                <img
+                  src="{{status.currentStatus.imageUrl}}"
+                  class="img-fluid rounded-start"
+                  alt="{{status.currentStatus.imageUrl}}"
+                />
                 {% else %}
                 <img src="{% static 'Portfolio/images/heyerapplogo_large.png' %}" class="img-fluid rounded-start" alt="heyerapplogo" />
                 {% endif %}
