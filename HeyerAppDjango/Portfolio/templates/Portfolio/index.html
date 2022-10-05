@@ -133,6 +133,8 @@
                     
                     {% elif status.currentStatus.activityName and status.currentStatus.activityType  %}
                     <li class="list-group-item"> 
+                      {% if status.currentStatus.activityShow %}
+                      {{status.currentStatus.activityShow}} - {% endif %}
                       {{status.currentStatus.activityType|title}} ->
                       {{status.currentStatus.activityName}}
                     </li>
