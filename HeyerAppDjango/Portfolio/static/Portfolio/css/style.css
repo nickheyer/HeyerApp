@@ -407,8 +407,8 @@ main {
 
   .stat-img {
     margin-top: 1rem;
-    max-width: 6rem !important ;
-    max-height: 6rem !important ;
+    max-width: 8rem !important ;
+    max-height: 8rem !important ;
   }
 
   .stat-card {
