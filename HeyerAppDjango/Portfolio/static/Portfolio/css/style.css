@@ -36,9 +36,9 @@
 }
 
 .centered-center{
-  margin:auto;
-  width:auto;
-  text-align: center;
+  margin:auto !important;
+  width:auto !important;
+  text-align: center !important;
 }
 
 .centered-left{
@@ -51,10 +51,11 @@ th {
 
 }
 
+
 .divParent {
   display: grid;
   grid-template-columns: auto repeat(2, auto);
-  grid-template-rows: repeat(auto-fill, auto);
+  grid-template-rows: repeat(auto-fit, auto) !important;
   max-width: fit-content !important;
   width:auto;
   margin:auto;
@@ -78,6 +79,20 @@ th {
   grid-template-rows: auto;
   width:auto;
   margin: 0 auto auto auto;
+
+}
+
+.divContainer-link{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  order: 2;
+
+
+  width:auto;
+  margin:auto;
+  justify-content: center;
+  grid-auto-flow: dense !important;
 
 }
 
@@ -112,6 +127,28 @@ th {
   color: var(--text-primary);
 }
 
+.button-scale {
+  font-weight: normal;
+  font-family: 'Source Code Pro' !important;
+  background-color: var(--bg-primary);
+  border: none;
+  color: var(--text-secondary);
+  padding: 5px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  transition-duration: 0.4s;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  min-width: 4rem !important;
+}
+
+.button-scale:hover {
+  color: var(--text-primary);
+}
 
 .bordered {
   border: 2px solid black;
@@ -121,7 +158,13 @@ th {
   height: auto;
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
 }
-
+.bordered-no-shadow {
+  border: 2px solid black;
+  width: fit-content;
+  margin: auto;
+  padding: 5%;
+  height: auto;
+}
 .simple-border-shadow {
   border: 2px solid var(--bg-secondary);
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);

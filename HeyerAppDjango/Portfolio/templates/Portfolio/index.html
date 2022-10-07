@@ -20,6 +20,8 @@
 
   <div class="divParent">
     <div class="divContainer-left">
+
+      <!-- Feed container -->
       <div class="biz-card-noanim feed-card card text-center biz-card-top">
         <div class="biz-card-body card-body scrolltainer">
           <h5 class="card-title">The Feed</h5>
@@ -74,15 +76,38 @@
       </div>
     </div>
 
+
     <div class="divContainer-grid vertical-center">
+      
+      <!-- Info -->
+      <div class="biz-card-noanim card text-center biz-card-top scrolltainer">
+        <div class="biz-card-body card-body">
+          <div class="bordered-no-shadow">
+          <h1 class="card-title">Nicholas Heyer</h1>
+          <h5 class="card-text">Software & Game Developer</h5>
+          <div class="divParent">
+            <div class="divContainer-link">
+              <a href="mailto:nick@heyer.app" class="button-scale">Email</a>
+              <a href="tel:949-690-9692" class="button-scale">Phone</a>
+              <a href="https://discord.gg/6Z9yKTbsrP" class="button-scale">Discord</a>
+              <a href="https://www.linkedin.com/in/nick-heyer-6b5384b4/" class="button-scale">LinkedIn</a>
+              <a href="https://github.com/nickheyer" class="button-scale">Github</a>
+              <a href="https://github.com/nickheyer/Resume/blob/main/Nicholas_Heyer_Resume.pdf" class="button-scale">Resume</a>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Current Status -->
       <div
         class="biz-card-noanim card text-center biz-card-top scrolltainer"
       >
-        <div class="biz-card-body card-body">
+        <div class="biz-card-body card-body" >
           
           <div class="card mb-3 toastainer">
             <div class="row g-0">
-              <div class="col-md-4">
+              <div class="col-md-4 ">
                 {% if status.currentStatus.spotifyAlbumCoverUrl %}
                 <img
                   src="{{status.currentStatus.spotifyAlbumCoverUrl}}"
@@ -151,21 +176,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div
-        class="biz-card-noanim side-card card text-center biz-card-bottom scrolltainer"
-      >
-        <div class="biz-card-body card-body">
-          <h5 class="card-title">The Links</h5>
-          <p class="card-text">
-            -- SITE CURRENTLY IN DEVELOPMENT, PLACEHOLDER TEXT -- Kitsch
-            coloring book retro, seitan schlitz tattooed biodiesel vexillologist
-            neutra. Synth mumblecore deep v, umami selfies normcore gluten-free
-            snackwave. Seitan ramps drinking vinegar venmo keytar, humblebrag
-            VHS post-ironic tacos godard pour-over.
-          </p>
         </div>
       </div>
 
