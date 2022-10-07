@@ -53,17 +53,17 @@
                 {% if status.currentStatus.spotifyAlbumCoverUrl %}
                 <img
                   src="{{status.currentStatus.spotifyAlbumCoverUrl}}"
-                  class="img-fluid rounded-start"
+                  class="stat-img img-fluid rounded-start"
                   alt="{{status.currentStatus.spotifyAlbum}}"
                 />
                 {% elif status.currentStatus.imageUrl %}
                 <img
                   src="{{status.currentStatus.imageUrl}}"
-                  class="img-fluid rounded-start"
+                  class="stat-img img-fluid rounded-start"
                   alt="{{status.currentStatus.imageUrl}}"
                 />
                 {% else %}
-                <img src="{% static 'Portfolio/images/heyerapplogo_large.png' %}" class="img-fluid rounded-start" alt="heyerapplogo" />
+                <img src="{% static 'Portfolio/images/heyerapplogo_large.png' %}" class="stat-img img-fluid rounded-start" alt="heyerapplogo" />
                 {% endif %}
               </div>
               <div class="col-md-8">

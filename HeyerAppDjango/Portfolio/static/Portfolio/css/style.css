@@ -272,7 +272,6 @@ body {
   background-color: var(--body-primary) !important;
   margin: 0;
   padding: 0;
-  overflow: hidden !important;
 }
 
 body::-webkit-scrollbar {
@@ -406,6 +405,16 @@ main {
     max-width: 50vw;
   }
 
+  .stat-img {
+    margin-top: 1rem;
+    max-width: 6rem !important ;
+    max-height: 6rem !important ;
+  }
+
+  .stat-card {
+    height:min-content !important;
+  }
+
   li {
     font-size: 10px !important;
   }
@@ -440,6 +449,9 @@ main {
     
   }
 
+  .biz-card {
+    min-width: 80vw !important;
+  }
   .biz-card:hover {
     transform: none !important;
     box-shadow: 0 20px 20px rgba(0.4, 0.4, 0.4, 0.4);
@@ -455,11 +467,11 @@ main {
     background-color: var(--bg-primary);
     border: none;
     color: var(--text-secondary);
-    padding: 5px 12px;
+    padding: 3px 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 12px;
+    font-size: 10px;
     transition-duration: 0.4s;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -476,9 +488,10 @@ main {
   }
   .divContainer-link {
     display: grid;
-    grid-template-columns: auto;
+    grid-template-columns: auto auto;
     max-width: fit-content !important;
-    row-gap: .5rem !important;
+    row-gap: .25rem !important;
+    column-gap: .25rem !important;
     width:auto;
     margin:auto;
     justify-content: center;
