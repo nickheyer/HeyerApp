@@ -193,7 +193,7 @@ th {
   max-width: 5rem;
   height: 5rem;
   display:flex;
-  margin-bottom: 20px;
+  margin-bottom: 20px !important;
 }
 
 .biz-card:hover {
@@ -220,17 +220,18 @@ th {
 }
 
 .feed-card {
+  flex: auto;
   height:90vh !important;
 }
 
 .scrolltainer {
   overflow-y:auto !important;
   scroll-padding: 15px;
-  
 }
 
+
 .stat-card {
-  overflow:visible !important;
+  overflow:scroll !important;
   height:50vh !important;
 }
 
@@ -388,8 +389,12 @@ main {
 
 /* Small screens */
 @media only screen and (max-width: 800px) {
+
+  .divContainer {
+    margin-bottom: 5rem !important;
+  }
   p {
-    font-size: inherit !important;
+    font-size: 12px !important;
   }
 
   .biz-card-body {
@@ -400,6 +405,9 @@ main {
     max-width: 50vw;
   }
 
+  li {
+    font-size: 10px !important;
+  }
 
   .nnavbar {
     bottom: 0;
@@ -439,6 +447,43 @@ main {
     overflow: none !important;
     position: relative !important;
   }
+
+  .button-scale {
+    font-weight: normal;
+    font-family: 'Source Code Pro' !important;
+    background-color: var(--bg-primary);
+    border: none;
+    color: var(--text-secondary);
+    padding: 5px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    transition-duration: 0.4s;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    min-width: auto !important;
+  }
+
+
+  .button {
+    padding: 5px 12px;
+    font-size: 12px;
+    margin:.25rem;
+  }
+  .divContainer-link {
+    display: grid;
+    grid-template-columns: auto;
+    max-width: fit-content !important;
+    row-gap: .5rem !important;
+    width:auto;
+    margin:auto;
+    justify-content: center;
+  }
+
+
 }
 
 /* Large screens */
