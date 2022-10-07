@@ -272,6 +272,7 @@ body {
   background-color: var(--body-primary) !important;
   margin: 0;
   padding: 0;
+  overflow: hidden !important;
 }
 
 body::-webkit-scrollbar {
@@ -391,7 +392,7 @@ main {
 @media only screen and (max-width: 800px) {
 
   .divContainer {
-    margin-bottom: 5rem !important;
+    margin-bottom: 10rem !important;
   }
   p {
     font-size: 12px !important;
