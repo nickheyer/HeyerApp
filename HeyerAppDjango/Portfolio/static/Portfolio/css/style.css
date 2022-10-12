@@ -212,6 +212,7 @@ th {
   margin-top: 0 !important;
   font-size: 16px !important;
   color: var(--bg-secondary);
+  border: none !important;
 }
 
 .side-card{
@@ -235,7 +236,6 @@ th {
 
 
 .stat-card {
-  overflow:scroll !important;
   height:50vh !important;
 }
 
@@ -417,7 +417,7 @@ main {
 
   .stat-card {
     height:min-content !important;
-    overflow: visible !important;
+    overflow: hidden !important;
   }
 
   li {
