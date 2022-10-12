@@ -170,14 +170,21 @@ class UserCreate(CreateView):
     form_class = forms.UserCreateForm
     template_name = 'Portfolio/signup.html'
 
+
     def get_success_url(self):
-        return reverse_lazy('login')
+        next = self.request.GET.get('next')
+        if next:
+            return reverse_lazy('Portfolio:login')+f"?next={next}"
+        return reverse_lazy('Portfolio:login')
 
 
 @login_required
 def auth_logout(request):
     logout(request)
-    return redirect(reverse_lazy("home"))
+    next = request.GET.get('next')
+    if next:
+        return redirect(next)
+    return redirect(reverse_lazy("Portfolio:home"))
 
 
 @decorators.receiver_with_multiple_senders(signal=post_save, senders=[models.Skill, models.Certification, models.Education, models.Experience, models.Project])

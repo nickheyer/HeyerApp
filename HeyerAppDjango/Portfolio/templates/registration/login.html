@@ -17,7 +17,11 @@
                     {{ form.as_p }}
                     <input class="button" type="submit" value="Login"/>
                     
-                    <a href="{% url 'create' %}" class="button">Create</a>
+                    {% if 'next' in request.GET %}
+                        <a href="{% url 'Portfolio:create' %}?next={{request.GET.next}}" class="button">Create</a>
+                    {% else %}
+                        <a href="{% url 'Portfolio:create' %}" class="button">Create</a>
+                    {% endif %}
                 </div>
             </form>
         </div>

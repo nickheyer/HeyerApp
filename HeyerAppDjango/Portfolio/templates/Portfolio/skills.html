@@ -12,7 +12,7 @@
 
 <main>
   <h1>Skills {% if user.is_superuser %}
-    <a style="float:right; margin-top:15px; margin-right: 30px;" href="{% url 'skill_create' %}" class="button">Add a skill</a>
+    <a style="float:right; margin-top:15px; margin-right: 30px;" href="{% url 'Portfolio:skill_create' %}" class="button">Add a skill</a>
     {% endif %}</h1>
   
 <div class="divParent"> 
@@ -43,15 +43,15 @@
             {% elif project.repository %}
               href="{{project.repository}}">
             {% else %}
-              href="{% url 'projects' %}">
+              href="{% url 'Portfolio:projects' %}">
             {% endif %}
             {{project.name}}</a></li>
           {% endfor %}
         </ul>
         <a href="{{item.link}}" class="button">Learn More</a>
       {% if user.is_superuser %}
-      <a href="{% url 'skill_update' item.id %}" class="button">Update</a>
-      <a href="{% url 'skill_delete' item.id %}" class="button">Delete</a>
+      <a href="{% url 'Portfolio:skill_update' item.id %}" class="button">Update</a>
+      <a href="{% url 'Portfolio:skill_delete' item.id %}" class="button">Delete</a>
       {% endif %}
       </div>
     </div>

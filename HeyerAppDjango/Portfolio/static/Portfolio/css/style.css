@@ -413,6 +413,7 @@ main {
 
   .stat-card {
     height:min-content !important;
+    overflow: visible !important;
   }
 
   li {

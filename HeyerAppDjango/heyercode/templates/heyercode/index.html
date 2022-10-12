@@ -1,0 +1,45 @@
+{% extends "heyercode/base.html" %} {% block head %}
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+  crossorigin="anonymous"
+/>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+  crossorigin="anonymous"
+></script>
+
+{% load static %}
+<script src="{% static 'Portfolio/javascript/source.js' %}"></script>
+{% endblock %} {% block content %}
+
+<main>
+  <h1 class="floating-header">HeyerCode</h1>
+
+  <div class="divParent">
+    <div class="divContainer-grid vertical-center">
+      
+      <!-- Info -->
+      <div class="biz-card-noanim card text-center biz-card-top scrolltainer">
+        <div class="biz-card-body card-body">
+          <div class="bordered-no-shadow">
+          <h1 class="card-title">What is</h1>
+          <h5 class="card-text">HeyerCode?</h5>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+</main>
+
+{% endblock %}

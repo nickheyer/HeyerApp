@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'Portfolio',
+    'heyercode',
 ]
 
 REST_FRAMEWORK = {

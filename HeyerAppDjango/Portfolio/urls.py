@@ -3,6 +3,8 @@ from rest_framework import routers
 from . import views
 
 
+app_name="Portfolio"
+
 resumeapi = routers.DefaultRouter()
 resumeapi.register(r'skills', views.SkillViewSet)
 resumeapi.register(r'experience', views.ExperienceViewSet)

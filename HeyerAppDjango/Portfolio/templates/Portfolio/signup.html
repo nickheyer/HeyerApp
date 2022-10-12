@@ -11,7 +11,11 @@
     <div class="centered login-form">
         <div class="bordered">
             <h2>Create Account</h2>
-            <form class="login" method="post" action="{% url 'create' %}">
+            {% if request.GET.next %}
+            <form class="login" method="post" action="{% url 'Portfolio:create'%}?next={{request.GET.next}}">
+            {% else %}
+            <form class="login" method="post" action="{% url 'Portfolio:create'%}">
+            {% endif %}
                 <div class="centered-left">
                     {% csrf_token %}
 

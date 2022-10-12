@@ -10,7 +10,7 @@
 
   <main>
     <h1>Education {% if user.is_superuser %}
-      <a style="float:right; margin-top:15px; margin-right: 30px;" href="{% url 'education_create' %}" class="button">Add an education</a>
+      <a style="float:right; margin-top:15px; margin-right: 30px;" href="{% url 'Portfolio:education_create' %}" class="button">Add an education</a>
       {% endif %}</h1>
     
 <div class="divParent"> 
@@ -25,8 +25,8 @@
       
         <a href="{{item.link}}" class="button">Learn More</a>
         {% if user.is_superuser %}
-        <a href="{% url 'education_update' item.id %}" class="button">Update</a>
-        <a href="{% url 'education_delete' item.id %}" class="button">Delete</a>
+        <a href="{% url 'Portfolio:education_update' item.id %}" class="button">Update</a>
+        <a href="{% url 'Portfolio:education_delete' item.id %}" class="button">Delete</a>
         {% endif %}
       </div>
       <div class="biz-card-hf card-footer text-muted">
