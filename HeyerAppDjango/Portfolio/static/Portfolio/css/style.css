@@ -224,6 +224,10 @@ th {
   height:90vh !important;
 }
 
+.no-scrolltainer {
+  overflow: visible !important;
+}
+
 .scrolltainer {
   overflow-y:auto !important;
   scroll-padding: 15px;
