@@ -225,7 +225,7 @@ th {
 }
 
 .no-scrolltainer {
-  overflow: visible !important;
+  overflow: hidden !important;
 }
 
 .scrolltainer {
