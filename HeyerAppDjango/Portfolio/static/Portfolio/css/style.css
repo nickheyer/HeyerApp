@@ -170,6 +170,10 @@ th {
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
 }
 
+.basic-border {
+  border: 2px solid black;
+}
+
 .biz-card {
   max-width:24rem;
   margin: 0.25rem;
@@ -179,6 +183,22 @@ th {
 
 }
 
+.article-card {
+  width: fit-content !important;
+  margin: auto;
+}
+
+.article-div {
+  margin: 15px;
+}
+
+.article-card-header {
+  margin-top: 30px;
+}
+
+.article-div-header {
+  font-weight:bolder !important;
+}
 .biz-card-hf {
   background-color: var(--bg-primary) !important;
   color: var(--text-secondary) !important;
