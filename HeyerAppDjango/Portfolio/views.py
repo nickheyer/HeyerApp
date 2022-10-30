@@ -31,12 +31,9 @@ class Home(TemplateView):
         startdate = timezone.now()
         enddate = startdate - timedelta(days=6)
         feeds = models.FeedEvent.objects.filter(eventdate__gte=enddate)
-        if feeds:
-            context['events'] = models.FeedEvent.objects.filter(
-                eventdate__gte=enddate)
-        else:
-            context['events'] = models.FeedEvent.objects.filter(
-                eventdate__gte=startdate - timedelta(days=120))
+
+        context['events'] = models.FeedEvent.objects.filter(
+            eventdate__gte=startdate - timedelta(days=120)).order_by('-id')[:16]
         context['status'] = models.StatusEvent.objects.latest('id')
         return context
 
