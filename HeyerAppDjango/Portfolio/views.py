@@ -184,6 +184,7 @@ def auth_logout(request):
     return redirect(reverse_lazy("Portfolio:home"))
 
 
+#Creates feed event when a skill, certificate, etc. model is updated. 
 @decorators.receiver_with_multiple_senders(signal=post_save, senders=[models.Skill, models.Certification, models.Education, models.Experience, models.Project])
 def add_feed(sender, **kwargs):
     instance = sender.objects.latest('id')
