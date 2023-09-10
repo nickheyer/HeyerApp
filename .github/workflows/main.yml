@@ -15,41 +15,26 @@ jobs:
     runs-on: [self-hosted, dev]
     if: github.event.inputs.onlyDeploy != 'yes'  # This conditional skips the build job if 'onlyDeploy' is 'yes'
     steps:
-      - name: Update requirements
-        run: |
-          
-          echo Changing Dir
-          cd ~/code/HeyerApp
-          echo Activating venv
-          source venv/bin/activate
-          echo Updating requirements file
-          pip freeze > requirements.txt
-          echo Deactivating
-          deactivate
-  
       - name: Build docker containers      
         run: |
-          echo Changing Dir
+          echo "Changing Dir"
           cd ~/code/HeyerApp
-          echo Building containers
           docker-compose build
           docker-compose push
           
-  # This workflow contains a single job called "deploy"
   deploy:
     needs: build
     runs-on: [self-hosted, prod]
     if: always()
     steps:
       - uses: actions/checkout@v3
-      - name: Update requirements
+      - name: Updating container
         run: |
-          echo Pulling images
-          cd $GITHUB_WORKSPACE
-          sudo docker-compose down
-          sudo docker-compose pull
-          sudo docker-compose up -d --build 
-          sudo docker image prune -f
+          echo "Pulling images"
+          cd /opt/compose
+          docker-compose down
+          docker-compose pull
+          docker-compose up -d
 
   
   send-request:
