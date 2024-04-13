@@ -161,6 +161,8 @@ class ProjectUpdate(mixins.AdminRequiredMixin, UpdateView):
 class Terminal(TemplateView):
     template_name = "Portfolio/terminal.html"
 
+class SpacedOut(TemplateView):
+    template_name = "Portfolio/game.html"
 
 class UserCreate(CreateView):
     model = UserModel

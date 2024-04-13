@@ -52,6 +52,7 @@ urlpatterns = [
     path("accounts/signup", views.UserCreate.as_view(), name="create"),
 
     path("terminal/", views.Terminal.as_view(), name="terminal"),
+    path("projects/live/spaced-out", views.SpacedOut.as_view(), name="spaced_out"),
 
     path("resumeapi/", include(resumeapi.urls)),
     path("miscapi/", include(miscapi.urls)),
