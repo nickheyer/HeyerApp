@@ -5,6 +5,7 @@
 
 venv/
 secrets/
+**/staticfiles/
 
 # User-specific files
 *.rsuser
