@@ -1,0 +1,15 @@
+body {
+  margin: 0 !important;
+}
+
+main {
+  height: 100vh;
+}
+
+canvas {
+  width: 100% !important;
+}
+
+.centered {
+  margin: 15px;
+}
